@@ -3,7 +3,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import gsap from "gsap";
 import { weddingConfig, assetPath } from "@/data/weddingConfig";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 interface FoldedIntroProps {
   onOpened: () => void;
@@ -200,15 +200,15 @@ export default function EnvelopeIntro({ onOpened, isOpen }: FoldedIntroProps) {
       className="fixed inset-0 z-[1000] flex flex-col items-center justify-between p-4 sm:p-7 overflow-hidden select-none"
       style={{
         background:
-          "radial-gradient(ellipse at 50% 35%, #FFFEFA 0%, #F7F3E9 55%, #DCE3D5 100%)"
+          "radial-gradient(ellipse at 50% 35%, #FFFEFA 0%, #FBF9F4 55%, #F0EAE0 100%)"
       }}
       role="dialog"
       aria-modal="true"
       aria-label="Folded Wedding Invitation"
     >
-      {/* Botanical Corner Ornaments */}
+      {/* Botanical Corner Ornaments — Tucked into corners to prevent text overlap */}
       <div
-        className="absolute top-0 left-0 w-32 sm:w-48 pointer-events-none opacity-85"
+        className="absolute top-0 left-0 w-20 sm:w-36 pointer-events-none opacity-60"
         aria-hidden="true"
       >
         <img
@@ -218,7 +218,7 @@ export default function EnvelopeIntro({ onOpened, isOpen }: FoldedIntroProps) {
         />
       </div>
       <div
-        className="absolute bottom-0 right-0 w-32 sm:w-48 pointer-events-none opacity-85 rotate-180"
+        className="absolute bottom-0 right-0 w-20 sm:w-36 pointer-events-none opacity-60 rotate-180"
         aria-hidden="true"
       >
         <img
@@ -229,15 +229,15 @@ export default function EnvelopeIntro({ onOpened, isOpen }: FoldedIntroProps) {
       </div>
 
       {/* Intro Header */}
-      <header className="relative z-10 text-center mt-2 sm:mt-4 px-2">
+      <header className="relative z-10 text-center mt-2 sm:mt-4 px-4 max-w-[290px] sm:max-w-md mx-auto">
         <p
-          className="text-[0.72rem] sm:text-sm tracking-[0.18em] sm:tracking-[0.26em] text-[#74866D] font-semibold mb-1"
+          className="text-[0.68rem] sm:text-xs tracking-[0.22em] text-[#74866D] font-bold mb-1"
           style={{ fontFamily: "var(--font-display)" }}
         >
           IN THE NAME OF ALLAH · THE MOST MERCIFUL
         </p>
         <p
-          className="text-[0.62rem] sm:text-xs tracking-[0.18em] sm:tracking-[0.24em] text-[#817E72] font-medium"
+          className="text-[0.6rem] sm:text-[0.72rem] tracking-[0.2em] text-[#817E72] font-medium"
           style={{ fontFamily: "var(--font-display)" }}
         >
           A SACRED NIKAH INVITATION
@@ -405,15 +405,15 @@ export default function EnvelopeIntro({ onOpened, isOpen }: FoldedIntroProps) {
             </div>
           </div>
 
-          {/* Center Monogram Crest / Seal */}
+          {/* Center Monogram Crest / Seal — Using the Actual Supplied Favicon Artwork */}
           <div
             ref={crestSealRef}
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[10] w-20 h-20 sm:w-24 sm:h-24 pointer-events-none drop-shadow-xl"
             aria-hidden="true"
           >
             <img
-              src={assetPath("/assets/sage-monogram-crest.svg")}
-              alt="Aleena and Siyad Crest"
+              src={assetPath("/favicon/android-chrome-512x512.png")}
+              alt="Aleena &amp; Siyad Monogram"
               className="w-full h-full object-contain"
             />
           </div>
@@ -422,19 +422,18 @@ export default function EnvelopeIntro({ onOpened, isOpen }: FoldedIntroProps) {
 
       {/* Intro Footer & CTA */}
       <footer className="relative z-10 text-center w-full max-w-sm mb-2 sm:mb-4">
-        <h1
-          className="text-[#343C32] text-2xl sm:text-3xl font-medium mb-3"
-          style={{ fontFamily: "var(--font-serif)" }}
+        <p
+          className="text-[#343C32] text-xl sm:text-2xl font-normal mb-3"
+          style={{ fontFamily: "var(--font-couple)" }}
         >
           {weddingConfig.couple.bride.fullName}{" "}
           <span
-            className="text-[#C6AD76] italic font-normal"
-            style={{ fontFamily: "var(--font-script)" }}
+            className="text-[#B09866] italic font-serif px-1"
           >
-            ×
+            &amp;
           </span>{" "}
           {weddingConfig.couple.groom.fullName}
-        </h1>
+        </p>
 
         <button
           ref={openBtnRef}
@@ -452,7 +451,6 @@ export default function EnvelopeIntro({ onOpened, isOpen }: FoldedIntroProps) {
             boxShadow: "0 8px 24px rgba(52, 60, 50, 0.22)"
           }}
         >
-          <Sparkles className="w-4 h-4 text-[#C6AD76] animate-pulse" />
           <span>OPEN INVITATION</span>
           <ArrowRight className="w-4 h-4 text-[#C6AD76] transition-transform group-hover:translate-x-1" />
         </button>

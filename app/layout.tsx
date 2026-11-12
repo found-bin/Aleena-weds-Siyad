@@ -12,34 +12,44 @@ const siteUrl = process.env.VERCEL_URL
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Aleena Siyad & Siyad T N — The Sage Heirloom Wedding Invitation",
+  title: "Aleena Siyad & Siyad T N | Wedding Invitation",
   description:
-    "Together with their families, Aleena Siyad & Siyad T N cordially invite you to celebrate their Nikah ceremony on Sunday, 13 December 2026.",
+    "Together with their families, we cordially invite you to celebrate their Nikah on 13 December 2026.",
   authors: [{ name: "found.bin" }],
   icons: {
-    icon: assetPath("/assets/favicon.svg"),
-    apple: assetPath("/assets/favicon.svg")
+    icon: [
+      { url: assetPath("/favicon/favicon.ico"), sizes: "any" },
+      { url: assetPath("/favicon/favicon-32x32.png"), sizes: "32x32", type: "image/png" },
+      { url: assetPath("/favicon/favicon-16x16.png"), sizes: "16x16", type: "image/png" }
+    ],
+    apple: [
+      { url: assetPath("/favicon/apple-touch-icon.png"), sizes: "180x180", type: "image/png" }
+    ],
+    other: [
+      { rel: "manifest", url: assetPath("/favicon/site.webmanifest") }
+    ]
   },
   openGraph: {
     type: "website",
-    title: "Aleena Siyad & Siyad T N — Nikah Wedding Invitation",
+    title: "Aleena Siyad & Siyad T N | Wedding Invitation",
     description:
-      "Together with their families, Aleena Siyad & Siyad T N cordially invite you to celebrate their Nikah ceremony on Sunday, 13 December 2026.",
+      "Together with their families, we cordially invite you to celebrate their Nikah on 13 December 2026.",
     images: [
       {
-        url: assetPath("/images/og-preview.jpg"),
-        width: 1200,
-        height: 630,
-        alt: "Aleena Siyad & Siyad T N — A Sacred Nikah Invitation"
+        url: assetPath("/favicon/web-thumb.png"),
+        width: 1733,
+        height: 907,
+        type: "image/png",
+        alt: "Aleena Siyad & Siyad T N | Wedding Invitation"
       }
     ]
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aleena Siyad & Siyad T N — Nikah Wedding Invitation",
+    title: "Aleena Siyad & Siyad T N | Wedding Invitation",
     description:
-      "Nikah Ceremony & Wedding Celebration on Sunday, 13 December 2026.",
-    images: [assetPath("/images/og-preview.jpg")]
+      "Together with their families, we cordially invite you to celebrate their Nikah on 13 December 2026.",
+    images: [assetPath("/favicon/web-thumb.png")]
   }
 };
 
@@ -56,13 +66,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const paperTextureUrl = assetPath("/assets/paper-texture.webp");
-  const faviconUrl = assetPath("/assets/favicon.svg");
+  const faviconIcoUrl = assetPath("/favicon/favicon.ico");
+  const favicon32Url = assetPath("/favicon/favicon-32x32.png");
+  const favicon16Url = assetPath("/favicon/favicon-16x16.png");
+  const appleTouchIconUrl = assetPath("/favicon/apple-touch-icon.png");
+  const manifestUrl = assetPath("/favicon/site.webmanifest");
   const heroCoupleUrl = assetPath("/images/couple/couple-illustration.jpg");
 
   return (
     <html lang="en">
       <head>
-        <link rel="icon" type="image/svg+xml" href={faviconUrl} />
+        <link rel="icon" href={faviconIcoUrl} sizes="any" />
+        <link rel="icon" type="image/png" sizes="32x32" href={favicon32Url} />
+        <link rel="icon" type="image/png" sizes="16x16" href={favicon16Url} />
+        <link rel="apple-touch-icon" sizes="180x180" href={appleTouchIconUrl} />
+        <link rel="manifest" href={manifestUrl} />
         <link rel="preload" as="image" href={heroCoupleUrl} />
         <style
           id="paper-bg-inject"

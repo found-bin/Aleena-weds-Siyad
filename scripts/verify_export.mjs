@@ -65,7 +65,9 @@ const criticalAssets = [
   'assets/bismillah-sage.svg',
   'assets/bismillah.svg',
   'assets/wedding-ambient.wav',
-  'favicon.svg'
+  'favicon/favicon.ico',
+  'favicon/apple-touch-icon.png',
+  'favicon/web-thumb.png'
 ];
 
 let allAssetsFound = true;
@@ -93,7 +95,7 @@ async function testHttp() {
     '/wedding_invite_one/images/venues/venue-reception.jpg',
     '/wedding_invite_one/images/decorations/botanical-accent.jpg',
     '/wedding_invite_one/assets/paper-texture.webp',
-    '/wedding_invite_one/favicon.svg'
+    '/wedding_invite_one/favicon/favicon.ico'
   ];
 
   for (const u of testUrls) {

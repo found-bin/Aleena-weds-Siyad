@@ -280,7 +280,7 @@ export const weddingConfig: WeddingConfig = {
       imageCaption: "Celebration Venue Illustration",
       dateDisplay: "Sunday, 13 December 2026",
       dateConfirmed: true,
-      timeDisplay: "12:00 PM",
+      timeDisplay: "12:00 PM IST",
       timeConfirmed: true,
       venueName: "The Palace Convention Centre",
       venueAddress: "Chandiroor, Alappuzha, Kerala",

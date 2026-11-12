@@ -43,26 +43,23 @@ export default function FamilySection() {
           </p>
         </motion.header>
 
-        {/* Editorial Layout: Open Folio Stationery Spread with Delicate Botanicals */}
-        <div className="max-w-[880px] mx-auto bg-[#FFFEFA] border border-[#B09866]/40 rounded-3xl p-6 sm:p-12 shadow-[0_8px_30px_-6px_rgba(52,60,50,0.08)] relative overflow-hidden">
-          {/* Subtle Corner Botanical Accents */}
-          <div className="absolute -top-3 -left-3 w-28 opacity-40 pointer-events-none" aria-hidden="true">
-            <img src={weddingImages.decorations.botanicalCornerSvg} alt="" />
-          </div>
-          <div className="absolute -bottom-3 -right-3 w-28 opacity-40 pointer-events-none rotate-180" aria-hidden="true">
-            <img src={weddingImages.decorations.botanicalCornerSvg} alt="" />
-          </div>
+        {/* Two Balanced Family Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-[880px] mx-auto items-stretch">
+          {/* Bride's Family Card */}
+          <motion.article
+            initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.75, delay: 0.1 }}
+            className="bg-[#FFFEFA] border border-[#B09866]/40 rounded-3xl p-6 sm:p-9 shadow-[0_8px_30px_-6px_rgba(52,60,50,0.08)] flex flex-col justify-between relative overflow-hidden"
+          >
+            {/* Subtle Corner Botanical Accent */}
+            <div className="absolute -top-2 -right-2 w-20 opacity-30 pointer-events-none" aria-hidden="true">
+              <img src={weddingImages.decorations.botanicalCornerSvg} alt="" className="rotate-90" />
+            </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14 relative z-10">
-            {/* Bride's Family Editorial Column */}
-            <motion.div
-              initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.75, delay: 0.1 }}
-              className="flex flex-col text-center md:text-left h-full"
-            >
-              <div className="flex items-center justify-center md:justify-start gap-2 mb-3">
+            <div>
+              <div className="flex items-center gap-2 mb-3">
                 <span className="w-4 h-[1px] bg-[#B09866]" />
                 <span
                   className="text-[0.68rem] tracking-[0.22em] text-[#74866D] font-bold uppercase"
@@ -73,7 +70,7 @@ export default function FamilySection() {
               </div>
 
               <h3
-                className="text-xl sm:text-2xl md:text-3xl font-normal text-[#343C32] leading-snug mb-1 tracking-tight"
+                className="text-xl sm:text-2xl font-normal text-[#343C32] leading-snug mb-1 tracking-tight"
                 style={{ fontFamily: "var(--font-serif)" }}
               >
                 <span className="block whitespace-nowrap">Mr. Siyad Ommerkutty &amp;</span>
@@ -83,26 +80,33 @@ export default function FamilySection() {
               <p className="text-xs sm:text-sm text-[#817E72] mb-5">
                 {bride.family.residence}
               </p>
+            </div>
 
-              <div className="mt-auto pt-4 border-t border-[#B09866]/25">
-                <p className="text-[0.68rem] font-semibold tracking-wider text-[#74866D] mb-1.5 uppercase">
-                  Family Roots
-                </p>
-                <p className="text-xs sm:text-[0.82rem] text-[#4A5335] leading-relaxed">
-                  {bride.family.lineage}
-                </p>
-              </div>
-            </motion.div>
+            <div className="mt-auto pt-4 border-t border-[#B09866]/25">
+              <p className="text-[0.68rem] font-semibold tracking-wider text-[#74866D] mb-1.5 uppercase">
+                Family Roots
+              </p>
+              <p className="text-xs sm:text-[0.82rem] text-[#4A5335] leading-relaxed">
+                {bride.family.lineage}
+              </p>
+            </div>
+          </motion.article>
 
-            {/* Groom's Family Editorial Column */}
-            <motion.div
-              initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.75, delay: 0.2 }}
-              className="flex flex-col text-center md:text-left h-full"
-            >
-              <div className="flex items-center justify-center md:justify-start gap-2 mb-3">
+          {/* Groom's Family Card */}
+          <motion.article
+            initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.75, delay: 0.2 }}
+            className="bg-[#FFFEFA] border border-[#B09866]/40 rounded-3xl p-6 sm:p-9 shadow-[0_8px_30px_-6px_rgba(52,60,50,0.08)] flex flex-col justify-between relative overflow-hidden"
+          >
+            {/* Subtle Corner Botanical Accent */}
+            <div className="absolute -top-2 -right-2 w-20 opacity-30 pointer-events-none" aria-hidden="true">
+              <img src={weddingImages.decorations.botanicalCornerSvg} alt="" className="rotate-90" />
+            </div>
+
+            <div>
+              <div className="flex items-center gap-2 mb-3">
                 <span className="w-4 h-[1px] bg-[#B09866]" />
                 <span
                   className="text-[0.68rem] tracking-[0.22em] text-[#74866D] font-bold uppercase"
@@ -113,7 +117,7 @@ export default function FamilySection() {
               </div>
 
               <h3
-                className="text-xl sm:text-2xl md:text-3xl font-normal text-[#343C32] leading-snug mb-1 tracking-tight"
+                className="text-xl sm:text-2xl font-normal text-[#343C32] leading-snug mb-1 tracking-tight"
                 style={{ fontFamily: "var(--font-serif)" }}
               >
                 <span className="block whitespace-nowrap">Mr. Nazar T M &amp;</span>
@@ -123,17 +127,17 @@ export default function FamilySection() {
               <p className="text-xs sm:text-sm text-[#817E72] mb-5">
                 {groom.family.residence}
               </p>
+            </div>
 
-              <div className="mt-auto pt-4 border-t border-[#B09866]/25">
-                <p className="text-[0.68rem] font-semibold tracking-wider text-[#74866D] mb-1.5 uppercase">
-                  Family Blessings
-                </p>
-                <p className="text-xs sm:text-[0.82rem] italic text-[#4A5335] leading-relaxed">
-                  {groom.family.blessingNote}
-                </p>
-              </div>
-            </motion.div>
-          </div>
+            <div className="mt-auto pt-4 border-t border-[#B09866]/25">
+              <p className="text-[0.68rem] font-semibold tracking-wider text-[#74866D] mb-1.5 uppercase">
+                Family Blessings
+              </p>
+              <p className="text-xs sm:text-[0.82rem] italic text-[#4A5335] leading-relaxed">
+                {groom.family.blessingNote}
+              </p>
+            </div>
+          </motion.article>
         </div>
       </div>
     </section>

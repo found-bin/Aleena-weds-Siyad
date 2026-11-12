@@ -98,114 +98,63 @@ export default function Hero({ onAddToCalendar }: HeroProps) {
           </p>
         </motion.div>
 
-        {/* Couple Names — Large, Romantic, Stacked with 'with' */}
+        {/* Couple Names — Romantic Calligraphy Highlight */}
         <motion.div
           initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.85, delay: 0.45 }}
-          className="my-3 sm:my-4 w-full flex flex-col items-center justify-center text-center"
+          className="my-3 sm:my-5 w-full flex flex-col items-center justify-center text-center px-2"
         >
-          <h1
-            className="text-3xl sm:text-5xl md:text-6xl font-normal text-[#343C32] tracking-tight leading-tight select-text"
-            style={{ fontFamily: "var(--font-serif)" }}
-          >
-            Aleena Siyad
-          </h1>
-          <div className="flex items-center justify-center gap-3 my-1.5 sm:my-2" aria-hidden="true">
-            <span className="w-8 sm:w-12 h-[1px] bg-[#B09866]/40" />
-            <em
-              className="text-sm sm:text-base md:text-lg text-[#B09866] font-normal leading-none"
-              style={{ fontFamily: "var(--font-serif)" }}
+          <h1 className="flex flex-col items-center justify-center text-center select-text">
+            <span
+              className="text-[clamp(2.75rem,8.5vw,5.5rem)] text-[#2F372C] font-normal leading-[1.12] tracking-wide whitespace-nowrap drop-shadow-[0_1px_1px_rgba(255,255,255,0.7)]"
+              style={{ fontFamily: "var(--font-calligraphy)" }}
             >
-              with
-            </em>
-            <span className="w-8 sm:w-12 h-[1px] bg-[#B09866]/40" />
-          </div>
-          <h1
-            className="text-3xl sm:text-5xl md:text-6xl font-normal text-[#343C32] tracking-tight leading-tight select-text"
-            style={{ fontFamily: "var(--font-serif)" }}
-          >
-            Siyad T N
+              Aleena Siyad
+            </span>
+            <div className="flex items-center justify-center gap-3 my-1 sm:my-1.5" aria-hidden="true">
+              <span className="w-8 sm:w-14 h-[1px] bg-[#B09866]/40" />
+              <em
+                className="text-xs sm:text-sm md:text-base text-[#B09866] font-normal italic tracking-widest leading-none"
+                style={{ fontFamily: "var(--font-serif)" }}
+              >
+                with
+              </em>
+              <span className="w-8 sm:w-14 h-[1px] bg-[#B09866]/40" />
+            </div>
+            <span className="sr-only">with</span>
+            <span
+              className="text-[clamp(2.75rem,8.5vw,5.5rem)] text-[#2F372C] font-normal leading-[1.12] tracking-wide whitespace-nowrap drop-shadow-[0_1px_1px_rgba(255,255,255,0.7)]"
+              style={{ fontFamily: "var(--font-calligraphy)" }}
+            >
+              Siyad TN
+            </span>
           </h1>
         </motion.div>
 
-        {/* Groom Lineage Subtext — No S/o Prefix */}
+        {/* Sacred Insha'Allah Blessing — Clean Italic Serif Font */}
         <motion.div
           initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.75, delay: 0.55 }}
-          className="text-xs sm:text-sm text-[#4A5335] max-w-[520px] mx-auto leading-relaxed my-2"
+          className="my-3 sm:my-4"
         >
-          <strong className="text-[#343C32] font-semibold block mb-0.5">
-            Mr. Nazar T M &amp; Mrs. Jumailath
-          </strong>
-          <span className="text-[#817E72] text-[0.76rem] sm:text-xs block">
-            Thankichira, CMC 33, Cherthala
-          </span>
-        </motion.div>
-
-        {/* Sacred Insha'Allah Blessing — Clean Italic Serif Font */}
-        <p
-          className="text-xl sm:text-2xl italic text-[#4A5335] my-2.5 sm:my-3 font-normal tracking-wide select-text"
-          style={{ fontFamily: "var(--font-serif)" }}
-        >
-          Insha&apos;Allah
-        </p>
-
-        {/* Date & Venue Distinct Stationery Containers */}
-        <motion.div
-          initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.75, delay: 0.65 }}
-          className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 w-full max-w-[560px] mx-auto my-3 sm:my-4 px-1"
-        >
-          {/* Wedding Date Container */}
-          <div className="bg-[#FFFEFA] border border-[#B09866]/40 rounded-2xl p-4 text-center flex flex-col justify-center items-center shadow-[0_4px_16px_-4px_rgba(52,60,50,0.08)]">
-            <span
-              className="text-[0.62rem] sm:text-[0.68rem] tracking-[0.22em] text-[#74866D] font-bold uppercase mb-1"
-              style={{ fontFamily: "var(--font-display)" }}
-            >
-              WEDDING DATE
-            </span>
-            <strong
-              className="text-base sm:text-lg font-bold text-[#343C32] tracking-wide"
-              style={{ fontFamily: "var(--font-serif)" }}
-            >
-              13 December 2026
-            </strong>
-            <span className="text-[0.72rem] sm:text-xs text-[#817E72] mt-0.5">
-              Sunday
-            </span>
-          </div>
-
-          {/* Nikah Ceremony & Venue Container */}
-          <div className="bg-[#FFFEFA] border border-[#B09866]/40 rounded-2xl p-4 text-center flex flex-col justify-center items-center shadow-[0_4px_16px_-4px_rgba(52,60,50,0.08)]">
-            <span
-              className="text-[0.62rem] sm:text-[0.68rem] tracking-[0.22em] text-[#74866D] font-bold uppercase mb-1"
-              style={{ fontFamily: "var(--font-display)" }}
-            >
-              NIKAH CEREMONY &amp; VENUE
-            </span>
-            <strong
-              className="text-base sm:text-lg font-bold text-[#343C32] tracking-wide"
-              style={{ fontFamily: "var(--font-serif)" }}
-            >
-              11:00 AM IST
-            </strong>
-            <span className="text-[0.72rem] sm:text-xs text-[#817E72] mt-0.5">
-              Kuthiathode Juma Masjid
-            </span>
-          </div>
+          <p
+            className="text-xl sm:text-2xl md:text-3xl italic text-[#4A5335] font-normal tracking-wide select-text"
+            style={{ fontFamily: "var(--font-serif)" }}
+          >
+            Insha&apos;Allah
+          </p>
         </motion.div>
 
         {/* Action Buttons */}
         <motion.div
           initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.75, delay: 0.75 }}
-          className="flex items-center justify-center gap-3.5 sm:gap-4 flex-wrap my-2"
+          transition={{ duration: 0.75, delay: 0.65 }}
+          className="flex items-center justify-center gap-3.5 sm:gap-4 flex-wrap my-3"
         >
-          <a href="#events" className="btn btn-sage-primary text-xs sm:text-sm">
+          <a href="#schedule" className="btn btn-sage-primary text-xs sm:text-sm">
             <span>View Schedule</span>
             <ChevronDown className="w-4 h-4 animate-bounce" />
           </a>

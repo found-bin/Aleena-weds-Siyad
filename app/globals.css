@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Amiri:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Allura&family=Amiri:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Tenor+Sans&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -29,6 +29,8 @@
   --font-serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --font-display: "Cinzel", "Cormorant Garamond", serif;
   --font-sans: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-couple: "Tenor Sans", "Plus Jakarta Sans", "Montserrat", sans-serif;
+  --font-calligraphy: "Allura", cursive;
   --font-arabic: "Amiri", "Traditional Arabic", "Scheherazade New", serif;
   --font-script: "Alex Brush", cursive;
 

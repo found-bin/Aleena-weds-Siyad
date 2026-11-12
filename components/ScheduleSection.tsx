@@ -4,14 +4,14 @@ import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { weddingConfig, weddingImages } from "@/data/weddingConfig";
 import IllustratedImage from "@/components/IllustratedImage";
-import { MapPin, Calendar, Clock, ExternalLink } from "lucide-react";
+import { MapPin, Calendar, Clock } from "lucide-react";
 
 export default function ScheduleSection() {
   const { events } = weddingConfig;
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section className="section-padding" id="events">
+    <section className="section-padding" id="schedule">
       <div className="container-standard">
         {/* Section Header */}
         <motion.header
@@ -45,7 +45,7 @@ export default function ScheduleSection() {
           </p>
         </motion.header>
 
-        {/* Distinct Premium Stationery Event Cards */}
+        {/* Restored Premium Event Cards with Strong Visual Hierarchy */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 mb-10 items-stretch">
           {events.map((event, idx) => (
             <motion.article
@@ -68,7 +68,7 @@ export default function ScheduleSection() {
 
                 {/* Top Subtle Label Banner */}
                 <div className="absolute top-4 left-4 z-10">
-                  <span className="inline-flex items-center px-3.5 py-1 rounded-full text-[0.65rem] tracking-[0.22em] font-bold uppercase bg-[#FFFEFA]/95 text-[#343C32] border border-[#B09866]/40 shadow-sm backdrop-blur-sm">
+                  <span className="inline-flex items-center px-3.5 py-1 rounded-full text-[0.65rem] tracking-[0.22em] font-bold uppercase bg-[#FFFEFA]/95 text-[#4A5335] border border-[#B09866]/40 shadow-sm backdrop-blur-sm">
                     {event.category}
                   </span>
                 </div>
@@ -120,17 +120,16 @@ export default function ScheduleSection() {
                   </div>
                 </div>
 
-                {/* Get Directions Button */}
+                {/* Prominent Solid Olive-Green Get Directions Button */}
                 <div className="pt-2">
                   <a
                     href={event.mapsSearchUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn btn-sage-primary w-full py-4 text-xs sm:text-sm font-semibold tracking-wider flex items-center justify-center gap-2.5 shadow-sm hover:shadow-md transition-all"
+                    className="w-full min-h-[48px] py-3.5 px-6 rounded-full text-xs sm:text-sm font-semibold tracking-wider flex items-center justify-center gap-2.5 bg-[#4A5335] hover:bg-[#343C32] text-[#FFFEFA] border border-[#B09866]/40 shadow-md hover:shadow-lg transition-all"
                   >
-                    <MapPin className="w-4 h-4 text-[#B09866]" />
+                    <MapPin className="w-4 h-4 text-[#C6AD76]" />
                     <span>Get Directions</span>
-                    <ExternalLink className="w-3.5 h-3.5 opacity-75 ml-0.5" />
                   </a>
                 </div>
               </div>

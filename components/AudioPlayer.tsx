@@ -49,7 +49,7 @@ export default function AudioPlayer({ onShowToast, autoPlayTrigger }: AudioPlaye
 
   return (
     <aside
-      className="fixed bottom-5 right-5 z-[990] transition-transform"
+      className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] right-4 sm:right-6 z-[990] transition-transform"
       aria-label="Background music controls"
     >
       <button
@@ -57,7 +57,7 @@ export default function AudioPlayer({ onShowToast, autoPlayTrigger }: AudioPlaye
         onClick={toggleAudio}
         aria-pressed={isPlaying}
         aria-label={isPlaying ? "Pause background music" : "Play background music"}
-        className={`inline-flex items-center gap-2.5 px-4 py-2.5 rounded-full text-xs font-semibold tracking-wider transition-all shadow-md backdrop-blur-md ${
+        className={`inline-flex items-center justify-center gap-2 p-2.5 sm:px-4 sm:py-2.5 rounded-full text-xs font-semibold tracking-wider transition-all shadow-md backdrop-blur-md ${
           isPlaying
             ? "bg-[#FFFEFA]/95 text-[#343C32] border border-[#C6AD76] ring-2 ring-[#C6AD76]/30 shadow-lg"
             : "bg-[#F7F3E9]/90 text-[#343C32] border border-[#C6AD76]/50 hover:bg-[#FFFEFA]"
@@ -74,7 +74,7 @@ export default function AudioPlayer({ onShowToast, autoPlayTrigger }: AudioPlaye
             <Music2 className="w-4 h-4 text-[#74866D]" />
           )}
         </span>
-        <span className="text-[0.75rem]">{isPlaying ? "Pause Music" : "Play Music"}</span>
+        <span className="text-[0.75rem] hidden sm:inline">{isPlaying ? "Pause Music" : "Play Music"}</span>
       </button>
 
       <audio

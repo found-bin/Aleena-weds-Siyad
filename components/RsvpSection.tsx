@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { weddingConfig, weddingImages } from "@/data/weddingConfig";
 import {
   CheckCircle2,
-  HelpCircle,
   XCircle,
   ArrowLeft,
   Send,
@@ -19,7 +18,7 @@ interface RsvpSectionProps {
   onShowToast: (msg: string) => void;
 }
 
-type AttendanceOption = "Joyfully Yes!" | "Maybe" | "Respectfully No";
+type AttendanceOption = "Joyfully Yes!" | "Respectfully No";
 
 export default function RsvpSection({ onShowToast }: RsvpSectionProps) {
   const [selectedAttendance, setSelectedAttendance] = useState<AttendanceOption | null>(null);
@@ -39,19 +38,13 @@ export default function RsvpSection({ onShowToast }: RsvpSectionProps) {
   }[] = [
     {
       label: "Joyfully Yes!",
-      description: "Delighted to attend and celebrate with you",
+      description: "Delighted to attend and celebrate with you.",
       icon: CheckCircle2,
       accentClass: "text-[#74866D]"
     },
     {
-      label: "Maybe",
-      description: "Hoping to attend, will confirm soon",
-      icon: HelpCircle,
-      accentClass: "text-[#B09866]"
-    },
-    {
       label: "Respectfully No",
-      description: "Sending warm prayers and best wishes from afar",
+      description: "Sending warm prayers and best wishes from afar.",
       icon: XCircle,
       accentClass: "text-[#817E72]"
     }
@@ -235,21 +228,6 @@ export default function RsvpSection({ onShowToast }: RsvpSectionProps) {
                     <span>Change answer</span>
                   </button>
                 </div>
-
-                {/* Warm Feedback Message for "Maybe" */}
-                {selectedAttendance === "Maybe" && (
-                  <div className="text-center py-3 px-4 bg-[#F7F3E9]/80 border border-[#C6AD76]/35 rounded-xl shadow-sm">
-                    <h4
-                      className="text-lg sm:text-xl font-normal text-[#343C32] leading-snug"
-                      style={{ fontFamily: "var(--font-serif)" }}
-                    >
-                      We hope you can join us!
-                    </h4>
-                    <p className="text-xs sm:text-sm italic text-[#4A5547] mt-1 font-medium leading-relaxed">
-                      It would mean so much to celebrate this special day with you.
-                    </p>
-                  </div>
-                )}
 
                 {/* Gentle Message for "Respectfully No" */}
                 {selectedAttendance === "Respectfully No" && (
