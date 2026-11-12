@@ -242,7 +242,7 @@ export const weddingConfig: WeddingConfig = {
     bismillahArabic: "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
     bismillahEnglish: "In the Name of Allah, The most Beneficent & Most Merciful",
     duaEnglish: "May Allah bless this union with love, mercy, and barakah.",
-    closingWish: "Best wishes, Dear & Near"
+    closingWish: "Best wishes, Dears & Nears"
   },
   dateTime: {
     gregorianDateString: "Sunday, 13 December 2026",

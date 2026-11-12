@@ -199,11 +199,8 @@ export default function EnvelopeIntro({ onOpened, isOpen }: FoldedIntroProps) {
       ref={stageRef}
       className="fixed inset-0 z-[1000] flex flex-col items-center justify-between p-4 sm:p-7 overflow-hidden select-none"
       style={{
-        backgroundColor: "#F7F3E9",
-        backgroundImage:
-          "radial-gradient(ellipse 95% 85% at 50% 38%, rgba(255, 254, 250, 0.95) 0%, rgba(247, 243, 233, 0.92) 55%, rgba(232, 237, 226, 0.72) 85%, rgba(116, 134, 109, 0.22) 100%), var(--bg-paper-url)",
-        backgroundSize: "cover",
-        backgroundPosition: "center"
+        background:
+          "radial-gradient(ellipse at 50% 35%, #FFFEFA 0%, #F7F3E9 55%, #DCE3D5 100%)"
       }}
       role="dialog"
       aria-modal="true"
@@ -211,7 +208,7 @@ export default function EnvelopeIntro({ onOpened, isOpen }: FoldedIntroProps) {
     >
       {/* Botanical Corner Ornaments */}
       <div
-        className="absolute top-0 left-0 w-32 sm:w-48 pointer-events-none opacity-45"
+        className="absolute top-0 left-0 w-32 sm:w-48 pointer-events-none opacity-85"
         aria-hidden="true"
       >
         <img
@@ -221,7 +218,7 @@ export default function EnvelopeIntro({ onOpened, isOpen }: FoldedIntroProps) {
         />
       </div>
       <div
-        className="absolute bottom-0 right-0 w-32 sm:w-48 pointer-events-none opacity-45 rotate-180"
+        className="absolute bottom-0 right-0 w-32 sm:w-48 pointer-events-none opacity-85 rotate-180"
         aria-hidden="true"
       >
         <img
@@ -232,15 +229,15 @@ export default function EnvelopeIntro({ onOpened, isOpen }: FoldedIntroProps) {
       </div>
 
       {/* Intro Header */}
-      <header className="relative z-10 text-center mt-2 sm:mt-4">
+      <header className="relative z-10 text-center mt-2 sm:mt-4 px-2">
         <p
-          className="text-xs sm:text-sm tracking-[0.26em] text-[#74866D] font-semibold mb-1"
+          className="text-[0.72rem] sm:text-sm tracking-[0.18em] sm:tracking-[0.26em] text-[#74866D] font-semibold mb-1"
           style={{ fontFamily: "var(--font-display)" }}
         >
           IN THE NAME OF ALLAH · THE MOST MERCIFUL
         </p>
         <p
-          className="text-[0.68rem] sm:text-xs tracking-[0.24em] text-[#817E72] font-medium"
+          className="text-[0.62rem] sm:text-xs tracking-[0.18em] sm:tracking-[0.24em] text-[#817E72] font-medium"
           style={{ fontFamily: "var(--font-display)" }}
         >
           A SACRED NIKAH INVITATION

@@ -39,7 +39,7 @@ const WEDDING_CONFIG = {
     invitationNote: "We cordially invite you to celebrate the Nikah of our beloved daughter",
     familyBlessing: "With the blessings of Allah and the love of our families, we would be honoured to have you with us as we begin this beautiful journey together.",
     dua: "May Allah bless this union with love, mercy and barakah.",
-    closingWish: "Best wishes, Dear & Near"
+    closingWish: "Best wishes, Dears & Nears"
   },
 
   // Date, Time & Astronomical / Hijri Info

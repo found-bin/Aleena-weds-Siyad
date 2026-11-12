@@ -70,7 +70,7 @@ export default function Countdown() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.85 }}
-          className="bg-[#FFFEFA]/90 border border-[#C6AD76]/40 rounded-3xl p-6 sm:p-12 max-w-[780px] mx-auto shadow-sm"
+          className="bg-[#FFFEFA]/90 border border-[#C6AD76]/40 rounded-3xl p-5 sm:p-12 max-w-[780px] mx-auto shadow-sm"
         >
           <p
             className="text-xs tracking-[0.28em] text-[#74866D] font-semibold mb-2 uppercase"
@@ -89,19 +89,19 @@ export default function Countdown() {
           </p>
 
           <div
-            className="flex items-center justify-center gap-2 sm:gap-4 my-6 select-none"
+            className="flex items-center justify-center gap-1.5 sm:gap-4 my-6 select-none"
             aria-live="polite"
           >
             {/* Days */}
-            <div className="flex-1 max-w-[110px] bg-[#F7F3E9]/80 border border-[#C6AD76]/30 rounded-xl py-3.5 sm:py-5 px-2 shadow-sm">
+            <div className="flex-1 max-w-[110px] bg-[#F7F3E9]/80 border border-[#C6AD76]/30 rounded-xl py-3 sm:py-5 px-1.5 sm:px-2 shadow-sm min-w-0">
               <span
-                className="block text-2xl sm:text-5xl font-bold text-[#343C32] tabular-nums"
+                className="block text-xl sm:text-4xl md:text-5xl font-bold text-[#343C32] tabular-nums"
                 style={{ fontFamily: "var(--font-serif)" }}
               >
                 {timeLeft.days}
               </span>
               <span
-                className="block text-[0.6rem] sm:text-xs tracking-[0.2em] text-[#74866D] font-semibold mt-1 uppercase"
+                className="block text-[0.55rem] sm:text-xs tracking-[0.16em] sm:tracking-[0.2em] text-[#74866D] font-semibold mt-1 uppercase"
                 style={{ fontFamily: "var(--font-display)" }}
               >
                 Days
@@ -113,15 +113,15 @@ export default function Countdown() {
             </span>
 
             {/* Hours */}
-            <div className="flex-1 max-w-[110px] bg-[#F7F3E9]/80 border border-[#C6AD76]/30 rounded-xl py-3.5 sm:py-5 px-2 shadow-sm">
+            <div className="flex-1 max-w-[110px] bg-[#F7F3E9]/80 border border-[#C6AD76]/30 rounded-xl py-3 sm:py-5 px-1.5 sm:px-2 shadow-sm min-w-0">
               <span
-                className="block text-2xl sm:text-5xl font-bold text-[#343C32] tabular-nums"
+                className="block text-xl sm:text-4xl md:text-5xl font-bold text-[#343C32] tabular-nums"
                 style={{ fontFamily: "var(--font-serif)" }}
               >
                 {timeLeft.hours}
               </span>
               <span
-                className="block text-[0.6rem] sm:text-xs tracking-[0.2em] text-[#74866D] font-semibold mt-1 uppercase"
+                className="block text-[0.55rem] sm:text-xs tracking-[0.16em] sm:tracking-[0.2em] text-[#74866D] font-semibold mt-1 uppercase"
                 style={{ fontFamily: "var(--font-display)" }}
               >
                 Hours
@@ -133,15 +133,15 @@ export default function Countdown() {
             </span>
 
             {/* Minutes */}
-            <div className="flex-1 max-w-[110px] bg-[#F7F3E9]/80 border border-[#C6AD76]/30 rounded-xl py-3.5 sm:py-5 px-2 shadow-sm">
+            <div className="flex-1 max-w-[110px] bg-[#F7F3E9]/80 border border-[#C6AD76]/30 rounded-xl py-3 sm:py-5 px-1.5 sm:px-2 shadow-sm min-w-0">
               <span
-                className="block text-2xl sm:text-5xl font-bold text-[#343C32] tabular-nums"
+                className="block text-xl sm:text-4xl md:text-5xl font-bold text-[#343C32] tabular-nums"
                 style={{ fontFamily: "var(--font-serif)" }}
               >
                 {timeLeft.minutes}
               </span>
               <span
-                className="block text-[0.6rem] sm:text-xs tracking-[0.2em] text-[#74866D] font-semibold mt-1 uppercase"
+                className="block text-[0.55rem] sm:text-xs tracking-[0.16em] sm:tracking-[0.2em] text-[#74866D] font-semibold mt-1 uppercase"
                 style={{ fontFamily: "var(--font-display)" }}
               >
                 Minutes
@@ -153,15 +153,15 @@ export default function Countdown() {
             </span>
 
             {/* Seconds */}
-            <div className="flex-1 max-w-[110px] bg-[#F7F3E9]/80 border border-[#C6AD76]/30 rounded-xl py-3.5 sm:py-5 px-2 shadow-sm">
+            <div className="flex-1 max-w-[110px] bg-[#F7F3E9]/80 border border-[#C6AD76]/30 rounded-xl py-3 sm:py-5 px-1.5 sm:px-2 shadow-sm min-w-0">
               <span
-                className="block text-2xl sm:text-5xl font-bold text-[#343C32] tabular-nums"
+                className="block text-xl sm:text-4xl md:text-5xl font-bold text-[#343C32] tabular-nums"
                 style={{ fontFamily: "var(--font-serif)" }}
               >
                 {timeLeft.seconds}
               </span>
               <span
-                className="block text-[0.6rem] sm:text-xs tracking-[0.2em] text-[#74866D] font-semibold mt-1 uppercase"
+                className="block text-[0.55rem] sm:text-xs tracking-[0.16em] sm:tracking-[0.2em] text-[#74866D] font-semibold mt-1 uppercase"
                 style={{ fontFamily: "var(--font-display)" }}
               >
                 Seconds

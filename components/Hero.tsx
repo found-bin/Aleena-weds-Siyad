@@ -135,49 +135,57 @@ export default function Hero({ onAddToCalendar }: HeroProps) {
           </span>
         </motion.div>
 
+        {/* Sacred Insha'Allah Blessing — High Contrast & Clear Visibility */}
         <p
-          className="text-xl sm:text-2xl text-[#C6AD76] my-2"
+          className="text-2xl sm:text-3xl text-[#343C32] font-normal my-2.5 sm:my-3.5 tracking-wide select-text"
           style={{ fontFamily: "var(--font-script)" }}
         >
           Insha&apos;Allah
         </p>
 
-        {/* Date Cluster Stationery Tile */}
+        {/* Date & Venue Distinct Stationery Containers */}
         <motion.div
-          initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, scale: 0.98 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.75, delay: 0.65 }}
-          className="inline-flex items-center justify-center gap-5 sm:gap-10 bg-[#FFFEFA] border border-[#C6AD76]/50 rounded-2xl shadow-sm px-6 sm:px-10 py-3 sm:py-3.5 my-3 sm:my-5 max-w-[95%]"
+          className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 w-full max-w-[560px] mx-auto my-3.5 sm:my-5 px-1"
         >
-          <div className="flex flex-col items-center">
-            <span className="text-[0.6rem] sm:text-[0.65rem] tracking-[0.22em] text-[#74866D] font-bold uppercase mb-0.5">
-              DATE
+          {/* Wedding Date Container */}
+          <div className="bg-[#FFFEFA] border border-[#C6AD76]/45 rounded-2xl p-4 text-center flex flex-col justify-center items-center shadow-[0_4px_16px_-4px_rgba(52,60,50,0.08)]">
+            <span
+              className="text-[0.62rem] sm:text-[0.68rem] tracking-[0.22em] text-[#74866D] font-bold uppercase mb-1"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              Wedding Date
             </span>
             <strong
-              className="text-sm sm:text-lg md:text-xl font-bold text-[#343C32] tracking-wide"
+              className="text-base sm:text-lg font-bold text-[#343C32] tracking-wide"
               style={{ fontFamily: "var(--font-serif)" }}
             >
-              13 DEC 2026
+              13 December 2026
             </strong>
-            <span className="text-[0.72rem] sm:text-xs text-[#817E72] mt-0.5">Sunday</span>
+            <span className="text-[0.72rem] sm:text-xs text-[#817E72] mt-0.5">
+              Sunday
+            </span>
           </div>
 
-          <div
-            className="w-[1px] h-8 sm:h-10 bg-gradient-to-b from-transparent via-[#C6AD76] to-transparent"
-            aria-hidden="true"
-          />
-
-          <div className="flex flex-col items-center">
-            <span className="text-[0.6rem] sm:text-[0.65rem] tracking-[0.22em] text-[#74866D] font-bold uppercase mb-0.5">
-              NIKAH CEREMONY
+          {/* Nikah Ceremony & Venue Container */}
+          <div className="bg-[#FFFEFA] border border-[#C6AD76]/45 rounded-2xl p-4 text-center flex flex-col justify-center items-center shadow-[0_4px_16px_-4px_rgba(52,60,50,0.08)]">
+            <span
+              className="text-[0.62rem] sm:text-[0.68rem] tracking-[0.22em] text-[#74866D] font-bold uppercase mb-1"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              Nikah Ceremony &amp; Venue
             </span>
             <strong
-              className="text-sm sm:text-lg md:text-xl font-bold text-[#343C32] tracking-wide"
+              className="text-base sm:text-lg font-bold text-[#343C32] tracking-wide"
               style={{ fontFamily: "var(--font-serif)" }}
             >
-              11:00 AM
+              11:00 AM IST
             </strong>
-            <span className="text-[0.72rem] sm:text-xs text-[#817E72] mt-0.5">Kuthiathode Masjid</span>
+            <span className="text-[0.72rem] sm:text-xs text-[#817E72] mt-0.5">
+              Kuthiathode Juma Masjid
+            </span>
           </div>
         </motion.div>
 

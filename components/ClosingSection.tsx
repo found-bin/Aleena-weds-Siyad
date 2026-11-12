@@ -60,7 +60,7 @@ export default function ClosingSection() {
 
           {/* Couple Names — Single Line */}
           <h2
-            className="text-[clamp(1.4rem,4.4vw,2.75rem)] font-normal text-white leading-tight mb-4 tracking-wide whitespace-nowrap text-center"
+            className="text-[clamp(1.15rem,4.4vw,2.75rem)] font-normal text-white leading-tight mb-4 tracking-wide whitespace-nowrap text-center"
             style={{ fontFamily: "var(--font-serif)" }}
           >
             <span>{weddingConfig.couple.bride.fullName}</span>{" "}
