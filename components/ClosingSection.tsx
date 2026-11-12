@@ -30,13 +30,13 @@ export default function ClosingSection() {
           className="relative z-10 max-w-[640px] mx-auto flex flex-col items-center"
         >
           {/* Delicate Botanical Accent Branch */}
-          <div className="w-36 sm:w-44 mb-8 opacity-75 pointer-events-none">
+          <div className="w-40 sm:w-52 mb-6 sm:mb-8 pointer-events-none opacity-90 mx-auto">
             <IllustratedImage
               src={weddingImages.decorations.botanicalAccent.src}
               fallbackSrc={weddingImages.decorations.botanicalAccent.fallbackSrc}
-              alt=""
-              aspectRatio="20/9"
-              className="w-full h-full object-contain filter invert contrast-125 opacity-70"
+              alt={weddingImages.decorations.botanicalAccent.alt}
+              aspectRatio="669/373"
+              className="w-full h-auto object-contain"
             />
           </div>
 

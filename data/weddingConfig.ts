@@ -115,12 +115,12 @@ export const weddingImages: WeddingImages = {
   },
   decorations: {
     botanicalAccent: {
-      src: assetPath("/images/decorations/botanical-accent.jpg"),
-      fallbackSrc: assetPath("/assets/sage-botanical-corner.svg"),
-      alt: "Delicate watercolor botanical wreath with sage olive leaves, eucalyptus, and cream jasmine blossoms",
-      width: 800,
-      height: 360,
-      aspectRatio: "20/9"
+      src: assetPath("/images/decorations/botanical-accent-removebg-preview.png"),
+      fallbackSrc: assetPath("/images/decorations/botanical-accent.png"),
+      alt: "Delicate watercolor botanical accent with sage olive leaves, eucalyptus, and cream jasmine blossoms",
+      width: 669,
+      height: 373,
+      aspectRatio: "669/373"
     },
     botanicalCornerSvg: assetPath("/assets/sage-botanical-corner.svg"),
     monogramCrestSvg: assetPath("/assets/sage-monogram-crest.svg"),

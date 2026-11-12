@@ -199,8 +199,11 @@ export default function EnvelopeIntro({ onOpened, isOpen }: FoldedIntroProps) {
       ref={stageRef}
       className="fixed inset-0 z-[1000] flex flex-col items-center justify-between p-4 sm:p-7 overflow-hidden select-none"
       style={{
-        background:
-          "radial-gradient(ellipse at 50% 35%, #FFFEFA 0%, #F7F3E9 55%, #DCE3D5 100%)"
+        backgroundColor: "#F7F3E9",
+        backgroundImage:
+          "radial-gradient(ellipse 95% 85% at 50% 38%, rgba(255, 254, 250, 0.95) 0%, rgba(247, 243, 233, 0.92) 55%, rgba(232, 237, 226, 0.72) 85%, rgba(116, 134, 109, 0.22) 100%), var(--bg-paper-url)",
+        backgroundSize: "cover",
+        backgroundPosition: "center"
       }}
       role="dialog"
       aria-modal="true"
@@ -208,7 +211,7 @@ export default function EnvelopeIntro({ onOpened, isOpen }: FoldedIntroProps) {
     >
       {/* Botanical Corner Ornaments */}
       <div
-        className="absolute top-0 left-0 w-32 sm:w-48 pointer-events-none opacity-85"
+        className="absolute top-0 left-0 w-32 sm:w-48 pointer-events-none opacity-45"
         aria-hidden="true"
       >
         <img
@@ -218,7 +221,7 @@ export default function EnvelopeIntro({ onOpened, isOpen }: FoldedIntroProps) {
         />
       </div>
       <div
-        className="absolute bottom-0 right-0 w-32 sm:w-48 pointer-events-none opacity-85 rotate-180"
+        className="absolute bottom-0 right-0 w-32 sm:w-48 pointer-events-none opacity-45 rotate-180"
         aria-hidden="true"
       >
         <img

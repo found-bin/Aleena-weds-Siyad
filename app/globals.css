@@ -51,10 +51,11 @@ html {
 body {
   background-color: var(--warm-ivory);
   background-image: 
-    radial-gradient(circle at 50% 15%, rgba(255, 254, 250, 0.96), rgba(247, 243, 233, 0.9) 55%, rgba(220, 227, 213, 0.45) 100%),
+    radial-gradient(ellipse 100% 70% at 50% 0%, rgba(255, 254, 250, 0.94) 0%, rgba(247, 243, 233, 0.92) 50%, rgba(235, 240, 232, 0.6) 80%, rgba(116, 134, 109, 0.16) 100%),
     var(--bg-paper-url);
-  background-attachment: fixed;
-  background-size: cover;
+  background-size: 100% 1200px, 1024px 1024px;
+  background-repeat: no-repeat, repeat;
+  background-position: top center, top left;
   color: var(--color-ink);
   font-family: var(--font-sans);
   font-size: 0.95rem;
