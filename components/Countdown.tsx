@@ -1,10 +1,11 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { weddingConfig } from "@/data/weddingConfig";
 
 export default function Countdown() {
+  const shouldReduceMotion = useReducedMotion();
   const [timeLeft, setTimeLeft] = useState({
     days: "00",
     hours: "00",
@@ -65,7 +66,7 @@ export default function Countdown() {
     <section className="section-padding text-center" id="countdown">
       <div className="container-standard">
         <motion.div
-          initial={{ opacity: 0, scale: 0.98 }}
+          initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.85 }}
@@ -78,7 +79,7 @@ export default function Countdown() {
             Counting The Moments
           </p>
           <h2
-            className="text-3xl sm:text-5xl font-normal text-[#343C32] leading-tight mb-2"
+            className="text-2xl sm:text-4xl font-normal text-[#343C32] leading-tight mb-2 tracking-tight"
             style={{ fontFamily: "var(--font-serif)" }}
           >
             Until the Sacred Nikah

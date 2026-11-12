@@ -22,19 +22,31 @@ export interface ThemeTokens {
 
 export const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
+export function getRuntimeBasePath(): string {
+  if (typeof window !== "undefined") {
+    const repoName = "/wedding_invite_one";
+    if (window.location.pathname === repoName || window.location.pathname.startsWith(`${repoName}/`)) {
+      return repoName;
+    }
+    return "";
+  }
+  return BASE_PATH;
+}
+
 export function assetPath(path: string): string {
   if (!path) return "";
   if (path.startsWith("http://") || path.startsWith("https://") || path.startsWith("data:")) {
     return path;
   }
   const clean = path.startsWith("/") ? path : `/${path}`;
-  if (!BASE_PATH) {
+  const base = getRuntimeBasePath();
+  if (!base) {
     return clean;
   }
-  if (clean === BASE_PATH || clean.startsWith(`${BASE_PATH}/`)) {
+  if (clean === base || clean.startsWith(`${base}/`)) {
     return clean;
   }
-  return `${BASE_PATH}${clean}`;
+  return `${base}${clean}`;
 }
 
 export interface FamilyDetails {
@@ -44,11 +56,87 @@ export interface FamilyDetails {
   blessingNote?: string;
 }
 
+export interface ImageAsset {
+  src: string;
+  fallbackSrc?: string;
+  alt: string;
+  width: number;
+  height: number;
+  aspectRatio: string;
+}
+
+export interface WeddingImages {
+  couple: {
+    illustration: ImageAsset;
+  };
+  venues: {
+    nikah: ImageAsset;
+    reception: ImageAsset;
+  };
+  decorations: {
+    botanicalAccent: ImageAsset;
+    botanicalCornerSvg: string;
+    monogramCrestSvg: string;
+    bismillahSageSvg: string;
+    dividerSvg: string;
+    waxSealGoldWebp: string;
+    paperTextureWebp: string;
+  };
+}
+
+export const weddingImages: WeddingImages = {
+  couple: {
+    illustration: {
+      src: assetPath("/images/couple/couple-illustration.jpg"),
+      fallbackSrc: assetPath("/images/couple/couple-photo-2.jpg"),
+      alt: "Aleena Siyad & Siyad T N Wedding Portrait",
+      width: 800,
+      height: 1000,
+      aspectRatio: "4/5"
+    }
+  },
+  venues: {
+    nikah: {
+      src: assetPath("/images/venues/venue-nikah.jpg"),
+      fallbackSrc: assetPath("/assets/events/event-nikah.jpg"),
+      alt: "Hand-painted watercolor architectural illustration of Kuthiathode Juma Masjid with white domes, minaret, and sage palms",
+      width: 1200,
+      height: 750,
+      aspectRatio: "16/10"
+    },
+    reception: {
+      src: assetPath("/images/venues/venue-reception.jpg"),
+      fallbackSrc: assetPath("/assets/events/event-reception.jpg"),
+      alt: "Romantic watercolor architectural illustration of The Palace Convention Centre with grand illuminated columns and floral arches",
+      width: 1200,
+      height: 750,
+      aspectRatio: "16/10"
+    }
+  },
+  decorations: {
+    botanicalAccent: {
+      src: assetPath("/images/decorations/botanical-accent.jpg"),
+      fallbackSrc: assetPath("/assets/sage-botanical-corner.svg"),
+      alt: "Delicate watercolor botanical wreath with sage olive leaves, eucalyptus, and cream jasmine blossoms",
+      width: 800,
+      height: 360,
+      aspectRatio: "20/9"
+    },
+    botanicalCornerSvg: assetPath("/assets/sage-botanical-corner.svg"),
+    monogramCrestSvg: assetPath("/assets/sage-monogram-crest.svg"),
+    bismillahSageSvg: assetPath("/assets/bismillah-sage.svg"),
+    dividerSvg: assetPath("/assets/sage-divider.svg"),
+    waxSealGoldWebp: assetPath("/assets/wax-seal-gold.webp"),
+    paperTextureWebp: assetPath("/assets/paper-texture.webp")
+  }
+};
+
 export interface WeddingEvent {
   id: string;
   category: string;
   title: string;
   imageSrc: string;
+  fallbackSrc?: string;
   imageAlt: string;
   imageCaption?: string;
   dateDisplay?: string;
@@ -80,7 +168,7 @@ export interface WeddingConfig {
   islamic: {
     bismillahArabic: string;
     bismillahEnglish: string;
-    duaArabic: string;
+    duaArabic?: string;
     duaEnglish: string;
     closingWish: string;
   };
@@ -153,7 +241,6 @@ export const weddingConfig: WeddingConfig = {
   islamic: {
     bismillahArabic: "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
     bismillahEnglish: "In the Name of Allah, The most Beneficent & Most Merciful",
-    duaArabic: "بَارَكَ اللَّهُ لَكَ وَبَارَكَ عَلَيْكَ وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ",
     duaEnglish: "May Allah bless this union with love, mercy, and barakah.",
     closingWish: "Best wishes, Dear & Near"
   },
@@ -170,9 +257,10 @@ export const weddingConfig: WeddingConfig = {
       id: "nikah",
       category: "THE NIKAH",
       title: "Nikah Ceremony",
-      imageSrc: assetPath("/assets/events/event-nikah.jpg"),
-      imageAlt: "Atmospheric architectural view of an elegant Islamic arched courtyard with morning sunlight and sage florals",
-      imageCaption: "Ceremony Ambiance",
+      imageSrc: weddingImages.venues.nikah.src,
+      fallbackSrc: weddingImages.venues.nikah.fallbackSrc,
+      imageAlt: weddingImages.venues.nikah.alt,
+      imageCaption: "Ceremony Venue Illustration",
       dateDisplay: "Sunday, 13 December 2026",
       dateConfirmed: true,
       timeDisplay: "11:00 AM IST",
@@ -186,9 +274,10 @@ export const weddingConfig: WeddingConfig = {
       id: "reception",
       category: "THE RECEPTION",
       title: "Wedding Reception",
-      imageSrc: assetPath("/assets/events/event-reception.jpg"),
-      imageAlt: "Atmospheric view of an elegant candlelit wedding banquet hall adorned with sage botanicals and champagne gold accents",
-      imageCaption: "Celebration Ambiance",
+      imageSrc: weddingImages.venues.reception.src,
+      fallbackSrc: weddingImages.venues.reception.fallbackSrc,
+      imageAlt: weddingImages.venues.reception.alt,
+      imageCaption: "Celebration Venue Illustration",
       // Unconfirmed: Date & time not invented per strict project instructions
       dateConfirmed: false,
       timeConfirmed: false,
@@ -206,13 +295,13 @@ export const weddingConfig: WeddingConfig = {
     maxGuests: 6
   },
   audio: {
-    title: "Gentle Wedding Ambience",
+    title: "Gentle Wedding Music",
     src: assetPath("/assets/wedding-ambient.wav"),
     fallbackSrc: assetPath("/assets/wedding-audio.mp3")
   },
   brand: {
     name: "found.bin",
-    tagline: "Bespoke Digital Invitations & Experiences",
+    tagline: "Wedding Invitation",
     url: "https://instagram.com/found.bin"
   }
 };

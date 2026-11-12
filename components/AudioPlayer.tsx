@@ -74,7 +74,7 @@ export default function AudioPlayer({ onShowToast, autoPlayTrigger }: AudioPlaye
             <Music2 className="w-4 h-4 text-[#74866D]" />
           )}
         </span>
-        <span className="text-[0.75rem]">{isPlaying ? "Pause Ambience" : "Play Ambience"}</span>
+        <span className="text-[0.75rem]">{isPlaying ? "Pause Music" : "Play Music"}</span>
       </button>
 
       <audio

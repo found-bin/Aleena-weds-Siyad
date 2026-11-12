@@ -95,9 +95,9 @@ const WEDDING_CONFIG = {
     maxGuests: 6
   },
 
-  // Audio / Ambience Configuration
+  // Audio / Music Configuration
   audio: {
-    title: "Gentle Wedding Ambience",
+    title: "Gentle Wedding Music",
     src: "assets/wedding-ambient.wav",
     fallbackSrc: "assets/wedding-audio.mp3",
     loop: true,
@@ -107,7 +107,7 @@ const WEDDING_CONFIG = {
   // Brand Watermark
   brand: {
     name: "found.bin",
-    tagline: "Bespoke Digital Invitations & Experiences",
+    tagline: "Wedding Invitation",
     url: "https://instagram.com/found.bin"
   }
 };

@@ -19,23 +19,51 @@ export default function EnvelopeIntro({ onOpened, isOpen }: FoldedIntroProps) {
   const innerCardRef = useRef<HTMLDivElement>(null);
   const innerContentRef = useRef<HTMLDivElement>(null);
   const openBtnRef = useRef<HTMLButtonElement>(null);
+  const tlRef = useRef<gsap.core.Timeline | null>(null);
   const [isOpening, setIsOpening] = useState(false);
 
   useEffect(() => {
+    // Check if visitor has already seen the intro in this session
+    try {
+      if (sessionStorage.getItem("wedding_intro_seen") === "true") {
+        onOpened();
+        if (stageRef.current) stageRef.current.style.display = "none";
+        return;
+      }
+    } catch {
+      // In case sessionStorage is blocked by privacy mode
+    }
+
     if (isOpen && stageRef.current) {
       stageRef.current.style.display = "none";
     }
+
+    return () => {
+      if (tlRef.current) {
+        tlRef.current.kill();
+      }
+    };
   }, [isOpen]);
 
   const handleOpenSequence = () => {
     if (isOpening || isOpen) return;
     setIsOpening(true);
 
+    try {
+      sessionStorage.setItem("wedding_intro_seen", "true");
+    } catch {
+      // Ignore storage errors
+    }
+
     const prefersReducedMotion =
       typeof window !== "undefined" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     if (prefersReducedMotion) {
+      if (stageRef.current) {
+        stageRef.current.style.pointerEvents = "none";
+        stageRef.current.style.display = "none";
+      }
       onOpened();
       return;
     }
@@ -43,9 +71,14 @@ export default function EnvelopeIntro({ onOpened, isOpen }: FoldedIntroProps) {
     // Coordinated GSAP Timeline for the Sage Heirloom Folded Paper Reveal
     const tl = gsap.timeline({
       onComplete: () => {
+        if (stageRef.current) {
+          stageRef.current.style.pointerEvents = "none";
+          stageRef.current.style.display = "none";
+        }
         onOpened();
       }
     });
+    tlRef.current = tl;
 
     // 1. Button press micro-feedback
     if (openBtnRef.current) {
@@ -58,40 +91,56 @@ export default function EnvelopeIntro({ onOpened, isOpen }: FoldedIntroProps) {
 
     // 2. Monogram seal & ribbon release
     if (crestSealRef.current) {
-      tl.to(crestSealRef.current, {
-        scale: 0.6,
-        opacity: 0,
-        y: -10,
-        duration: 0.4,
-        ease: "power2.in"
-      }, "+=0.05");
+      tl.to(
+        crestSealRef.current,
+        {
+          scale: 0.6,
+          opacity: 0,
+          y: -10,
+          duration: 0.4,
+          ease: "power2.in"
+        },
+        "+=0.05"
+      );
     }
 
     // 3. Folded Sage Covers unfold outward with 3D perspective
     if (leftCoverFlapRef.current) {
-      tl.to(leftCoverFlapRef.current, {
-        rotateY: -155,
-        duration: 1.0,
-        ease: "power3.inOut"
-      }, "-=0.25");
+      tl.to(
+        leftCoverFlapRef.current,
+        {
+          rotateY: -155,
+          duration: 1.0,
+          ease: "power3.inOut"
+        },
+        "-=0.25"
+      );
     }
 
     if (rightCoverFlapRef.current) {
-      tl.to(rightCoverFlapRef.current, {
-        rotateY: 155,
-        duration: 1.0,
-        ease: "power3.inOut"
-      }, "<");
+      tl.to(
+        rightCoverFlapRef.current,
+        {
+          rotateY: 155,
+          duration: 1.0,
+          ease: "power3.inOut"
+        },
+        "<"
+      );
     }
 
     // 4. Inner warm ivory stationery card expands forward
     if (innerCardRef.current) {
-      tl.to(innerCardRef.current, {
-        scale: 1.03,
-        boxShadow: "0 28px 60px -10px rgba(52, 60, 50, 0.28)",
-        duration: 0.9,
-        ease: "power2.out"
-      }, "-=0.7");
+      tl.to(
+        innerCardRef.current,
+        {
+          scale: 1.03,
+          boxShadow: "0 28px 60px -10px rgba(52, 60, 50, 0.28)",
+          duration: 0.9,
+          ease: "power2.out"
+        },
+        "-=0.7"
+      );
     }
 
     // 5. Sequential reveal of inner invitation typography
@@ -104,19 +153,42 @@ export default function EnvelopeIntro({ onOpened, isOpen }: FoldedIntroProps) {
       );
     }
 
-    // 6. Smooth crossfade to main invitation page
+    // 6. Smooth crossfade to main invitation page:
+    // Allow pointer events to pass through immediately as crossfade begins so visitors can interact
     if (stageRef.current) {
-      tl.to(stageRef.current, {
-        opacity: 0,
-        scale: 1.02,
-        duration: 0.75,
-        ease: "power2.inOut",
-        delay: 0.4
-      });
+      tl.to(
+        stageRef.current,
+        {
+          opacity: 0,
+          scale: 1.02,
+          duration: 0.75,
+          ease: "power2.inOut",
+          delay: 0.3,
+          onStart: () => {
+            if (stageRef.current) {
+              stageRef.current.style.pointerEvents = "none";
+            }
+            onOpened();
+          }
+        }
+      );
     }
   };
 
   const handleSkip = () => {
+    try {
+      sessionStorage.setItem("wedding_intro_seen", "true");
+    } catch {
+      // Ignore storage errors
+    }
+
+    if (tlRef.current) {
+      tlRef.current.kill();
+    }
+    if (stageRef.current) {
+      stageRef.current.style.pointerEvents = "none";
+      stageRef.current.style.display = "none";
+    }
     onOpened();
   };
 
@@ -178,7 +250,7 @@ export default function EnvelopeIntro({ onOpened, isOpen }: FoldedIntroProps) {
         className="relative my-auto flex items-center justify-center"
         style={{
           width: "min(90vw, 370px)",
-          height: "275px",
+          height: "285px",
           perspective: "1400px"
         }}
       >
@@ -200,14 +272,23 @@ export default function EnvelopeIntro({ onOpened, isOpen }: FoldedIntroProps) {
           >
             {/* Arabic Bismillah Calligraphy */}
             <p
-              className="font-arabic text-[#343C32] text-lg sm:text-xl font-normal leading-relaxed mb-1 tracking-normal select-text"
+              className="font-arabic text-[#343C32] text-lg sm:text-xl font-normal leading-relaxed tracking-normal select-text mb-1"
               lang="ar"
               dir="rtl"
             >
               {weddingConfig.islamic.bismillahArabic}
             </p>
 
-            <p className="text-[0.58rem] sm:text-[0.62rem] tracking-[0.22em] text-[#817E72] font-medium uppercase mt-0.5">
+            {/* Subtle English Translation */}
+            <p
+              className="text-[0.52rem] sm:text-[0.56rem] italic text-[#74866D] tracking-wide my-1 opacity-90 leading-tight"
+              style={{ fontFamily: "var(--font-serif)" }}
+            >
+              “{weddingConfig.islamic.bismillahEnglish}”
+            </p>
+
+            {/* Subtitle with subtle vertical breathing room */}
+            <p className="text-[0.58rem] sm:text-[0.62rem] tracking-[0.22em] text-[#817E72] font-medium uppercase my-1">
               Together with their families
             </p>
 
@@ -250,6 +331,10 @@ export default function EnvelopeIntro({ onOpened, isOpen }: FoldedIntroProps) {
         {/* FOLDED SAGE FOLIO COVERS (Left and Right Flaps meeting in center) */}
         <div
           onClick={handleOpenSequence}
+          onTouchEnd={(e) => {
+            e.preventDefault();
+            handleOpenSequence();
+          }}
           onKeyDown={(e) => {
             if (e.key === "Enter" || e.key === " ") {
               e.preventDefault();
@@ -355,6 +440,10 @@ export default function EnvelopeIntro({ onOpened, isOpen }: FoldedIntroProps) {
           ref={openBtnRef}
           type="button"
           onClick={handleOpenSequence}
+          onTouchEnd={(e) => {
+            e.preventDefault();
+            handleOpenSequence();
+          }}
           disabled={isOpening}
           className="group relative inline-flex items-center justify-center gap-2 px-7 py-3 rounded-full text-xs sm:text-sm font-semibold tracking-[0.22em] text-[#FFFEFA] border border-[#C6AD76] shadow-lg transition-all"
           style={{
@@ -372,6 +461,10 @@ export default function EnvelopeIntro({ onOpened, isOpen }: FoldedIntroProps) {
           <button
             type="button"
             onClick={handleSkip}
+            onTouchEnd={(e) => {
+              e.preventDefault();
+              handleSkip();
+            }}
             className="text-[0.72rem] tracking-wider text-[#817E72] underline underline-offset-4 hover:text-[#343C32] transition-colors"
           >
             Skip intro &rarr;

@@ -1,16 +1,15 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
 import { weddingConfig } from "@/data/weddingConfig";
-import { Share2, Link as LinkIcon, Calendar, Send } from "lucide-react";
+import { Share2 } from "lucide-react";
 
 interface SharingBarProps {
   onShowToast: (msg: string) => void;
   onAddToCalendar: () => void;
 }
 
-export default function SharingBar({ onShowToast, onAddToCalendar }: SharingBarProps) {
+export default function SharingBar({ onShowToast }: SharingBarProps) {
   const { bride, groom } = weddingConfig.couple;
 
   const handleNativeShare = async () => {
@@ -37,7 +36,8 @@ export default function SharingBar({ onShowToast, onAddToCalendar }: SharingBarP
     if (typeof window === "undefined") return;
     const url = window.location.href;
     if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(url)
+      navigator.clipboard
+        .writeText(url)
         .then(() => onShowToast("Invitation link copied to clipboard!"))
         .catch(() => fallbackCopy(url));
     } else {
@@ -62,79 +62,20 @@ export default function SharingBar({ onShowToast, onAddToCalendar }: SharingBarP
     document.body.removeChild(textArea);
   };
 
-  const shareText = `You are cordially invited to celebrate the Nikah of ${bride.fullName} & ${groom.fullName} on Sunday, 13 December 2026.`;
-
-  const handleWhatsAppShare = () => {
-    if (typeof window === "undefined") return;
-    const url = `https://wa.me/?text=${encodeURIComponent(shareText + "\n\n" + window.location.href)}`;
-    window.open(url, "_blank", "noopener,noreferrer");
-  };
-
   return (
-    <section className="section-padding text-center" id="share">
-      <div className="container-standard">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.8 }}
-          className="max-w-[620px] mx-auto"
-        >
-          <p
-            className="text-xs tracking-[0.28em] text-[#C6AD76] font-semibold mb-2"
-            style={{ fontFamily: "var(--font-display)" }}
-          >
-            SPREAD THE JOY
-          </p>
-          <h2
-            className="text-3xl sm:text-5xl font-normal text-[#343C32] leading-tight mb-2"
-            style={{ fontFamily: "var(--font-serif)" }}
-          >
-            Share this Invitation
-          </h2>
-          <p className="text-xs sm:text-sm text-[#817E72] mb-6">
-            Pass along the celebration details with relatives, loved ones, and friends.
-          </p>
-
-          <div className="flex items-center justify-center gap-3 sm:gap-4 flex-wrap">
-            <button
-              type="button"
-              onClick={handleNativeShare}
-              className="btn btn-sage-primary"
-            >
-              <Share2 className="w-4 h-4 text-[#C6AD76]" />
-              <span>Share Invitation</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={handleCopyLink}
-              className="btn btn-ivory-outline"
-            >
-              <LinkIcon className="w-4 h-4 text-[#74866D]" />
-              <span>Copy Link</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={handleWhatsAppShare}
-              className="btn bg-[#25d366] text-white hover:bg-[#20bd5a] border border-[#1ebc59] shadow-sm hover:shadow-md"
-            >
-              <Send className="w-4 h-4" />
-              <span>WhatsApp Share</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={onAddToCalendar}
-              className="btn btn-ivory-outline"
-            >
-              <Calendar className="w-4 h-4 text-[#C6AD76]" />
-              <span>Add to Calendar</span>
-            </button>
-          </div>
-        </motion.div>
-      </div>
-    </section>
+    <aside
+      className="py-6 sm:py-8 px-4 text-center"
+      aria-label="Share invitation"
+      id="share"
+    >
+      <button
+        type="button"
+        onClick={handleNativeShare}
+        className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs text-[#74866D] hover:text-[#343C32] bg-white/70 hover:bg-white border border-[#C6AD76]/35 hover:border-[#74866D]/60 transition-all shadow-sm hover:shadow"
+      >
+        <Share2 className="w-3.5 h-3.5 text-[#C6AD76]" />
+        <span className="font-medium tracking-wide">Share this invite</span>
+      </button>
+    </aside>
   );
 }

@@ -1,115 +1,114 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
-import { weddingConfig, assetPath } from "@/data/weddingConfig";
+import { motion, useReducedMotion } from "framer-motion";
+import { weddingConfig, weddingImages } from "@/data/weddingConfig";
+import IllustratedImage from "@/components/IllustratedImage";
 
 export default function ClosingSection() {
   const currentYear = new Date().getFullYear();
+  const shouldReduceMotion = useReducedMotion();
 
   return (
     <>
-      <section className="relative bg-gradient-to-br from-[#343C32] via-[#283027] to-[#1C221B] text-white py-16 sm:py-24 px-4 sm:px-6 text-center overflow-hidden">
-        {/* Subtle Geometric Overlay */}
+      <section className="relative bg-gradient-to-b from-[#2D352B] via-[#242C23] to-[#1C231B] text-white py-20 sm:py-28 px-6 sm:px-8 text-center overflow-hidden">
+        {/* Soft Ambient Radial Glow */}
         <div
-          className="absolute inset-0 opacity-[0.05] pointer-events-none"
+          className="absolute inset-0 pointer-events-none opacity-30"
           style={{
-            backgroundImage: `url('${assetPath("/assets/islamic-pattern.svg")}')`,
-            backgroundSize: "80px 80px"
+            background:
+              "radial-gradient(circle at 50% 35%, rgba(198, 173, 118, 0.18) 0%, transparent 65%)",
           }}
           aria-hidden="true"
         />
 
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.85 }}
-          className="relative z-10 max-w-[680px] mx-auto flex flex-col items-center"
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="relative z-10 max-w-[640px] mx-auto flex flex-col items-center"
         >
-          {/* Sage Monogram Crest */}
-          <div className="w-16 h-16 sm:w-20 sm:h-20 mb-5 sm:mb-6 drop-shadow-lg">
-            <img
-              src={assetPath("/assets/sage-monogram-crest.svg")}
-              alt="Aleena & Siyad Monogram Crest"
-              className="w-full h-full object-contain"
+          {/* Delicate Botanical Accent Branch */}
+          <div className="w-36 sm:w-44 mb-8 opacity-75 pointer-events-none">
+            <IllustratedImage
+              src={weddingImages.decorations.botanicalAccent.src}
+              fallbackSrc={weddingImages.decorations.botanicalAccent.fallbackSrc}
+              alt=""
+              aspectRatio="20/9"
+              className="w-full h-full object-contain filter invert contrast-125 opacity-70"
             />
           </div>
 
-          {/* Arabic Dua */}
+          {/* English Blessing / Dua with Generous Spacing */}
           <p
-            lang="ar"
-            dir="rtl"
-            className="font-arabic text-2xl sm:text-3xl md:text-4xl text-[#E4D5B7] font-normal leading-[1.85] tracking-normal mb-3 max-w-[620px] mx-auto select-text"
-          >
-            {weddingConfig.islamic.duaArabic}
-          </p>
-
-          {/* English Dua */}
-          <p
-            className="text-sm sm:text-base md:text-lg italic text-[#DCE3D5] mb-6 max-w-[520px] mx-auto leading-relaxed"
+            className="text-lg sm:text-xl md:text-2xl italic text-[#EDE7DB] mb-8 max-w-[540px] mx-auto leading-relaxed font-light"
             style={{ fontFamily: "var(--font-serif)" }}
           >
             “{weddingConfig.islamic.duaEnglish}”
           </p>
 
-          {/* Gold Filigree Rule */}
+          {/* Refined Gold Separator */}
           <div
-            className="flex items-center justify-center gap-3 text-[#C6AD76] my-2 sm:my-3 opacity-75"
+            className="flex items-center justify-center gap-3 text-[#C6AD76] mb-8 opacity-70"
             aria-hidden="true"
           >
-            <span className="w-8 sm:w-12 h-[1px] bg-gradient-to-r from-transparent via-[#C6AD76] to-transparent" />
-            <span className="text-[0.6rem]">✦</span>
-            <span className="w-8 sm:w-12 h-[1px] bg-gradient-to-r from-transparent via-[#C6AD76] to-transparent" />
+            <span className="w-10 sm:w-16 h-[1px] bg-gradient-to-r from-transparent via-[#C6AD76] to-transparent" />
+            <span className="text-[0.65rem] tracking-widest">✦</span>
+            <span className="w-10 sm:w-16 h-[1px] bg-gradient-to-r from-transparent via-[#C6AD76] to-transparent" />
           </div>
 
-          {/* Names */}
+          {/* Couple Names — Single Line */}
           <h2
-            className="text-[clamp(2.1rem,6vw,3.75rem)] font-normal text-white leading-tight my-2"
+            className="text-[clamp(1.4rem,4.4vw,2.75rem)] font-normal text-white leading-tight mb-4 tracking-wide whitespace-nowrap text-center"
             style={{ fontFamily: "var(--font-serif)" }}
           >
-            {weddingConfig.couple.bride.fullName}{" "}
+            <span>{weddingConfig.couple.bride.fullName}</span>{" "}
             <span
-              className="text-[#C6AD76] italic font-normal text-[0.85em] mx-1"
+              className="text-[#C6AD76] italic font-normal text-[0.85em] mx-1.5"
               style={{ fontFamily: "var(--font-script)" }}
             >
               &amp;
             </span>{" "}
-            {weddingConfig.couple.groom.fullName}
+            <span>{weddingConfig.couple.groom.fullName}</span>
           </h2>
 
-          {/* Closing Wish */}
+          {/* Closing Wish with Generous Vertical Space */}
           <p
-            className="text-sm sm:text-base tracking-[0.18em] uppercase text-[#C6AD76] mb-6 font-medium"
+            className="text-xs sm:text-sm tracking-[0.24em] uppercase text-[#C6AD76] mb-8 font-medium"
             style={{ fontFamily: "var(--font-serif)" }}
           >
             {weddingConfig.islamic.closingWish}
           </p>
 
-          {/* Date & Venue Badge */}
-          <div className="inline-block text-[0.68rem] sm:text-xs tracking-[0.2em] text-[#C6AD76] uppercase border border-[#C6AD76]/40 rounded-full px-5 py-2.5 bg-white/5 backdrop-blur-sm">
+          {/* Refined Date & Venue Identifier */}
+          <div className="inline-block text-[0.72rem] sm:text-xs tracking-[0.22em] text-[#D8CFBC] uppercase border border-[#C6AD76]/30 rounded-full px-6 py-2.5 bg-white/[0.03] backdrop-blur-sm">
             13 December 2026 &middot; Kuthiathode Juma Masjid
           </div>
         </motion.div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-6 px-4 bg-[#181E17] text-[#9EA89A] text-xs text-center border-t border-[#C6AD76]/15">
-        <p>
-          Crafted with love for <strong>Aleena &amp; Siyad</strong> &middot; {currentYear}
-        </p>
-        <p className="mt-1 text-[0.7rem] opacity-75">
-          Designed by{" "}
-          <a
-            href={weddingConfig.brand.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[#C6AD76] underline underline-offset-2"
-          >
-            {weddingConfig.brand.name}
-          </a>{" "}
-          &middot; {weddingConfig.brand.tagline}
-        </p>
+      {/* Clean, Harmonious Footer */}
+      <footer className="py-8 px-6 bg-[#161C15] text-[#A6B2A2] text-xs text-center border-t border-[#C6AD76]/15">
+        <div className="max-w-[500px] mx-auto space-y-2">
+          <p className="text-sm font-light text-[#E5DDD0]" style={{ fontFamily: "var(--font-serif)" }}>
+            With heartfelt gratitude for your prayers &amp; presence
+          </p>
+          <p className="text-xs text-[#95A291]">
+            Aleena &amp; Siyad &middot; {currentYear}
+          </p>
+          <div className="pt-2 text-[0.7rem] text-[#7A8776]">
+            <span>Designed by </span>
+            <a
+              href={weddingConfig.brand.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#C6AD76] hover:text-[#E4D5B7] transition-colors underline underline-offset-2"
+            >
+              {weddingConfig.brand.name}
+            </a>
+          </div>
+        </div>
       </footer>
     </>
   );

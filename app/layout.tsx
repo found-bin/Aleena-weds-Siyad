@@ -23,7 +23,7 @@ export const metadata: Metadata = {
       "Together with their families, Aleena Siyad & Siyad T N cordially invite you to celebrate their Nikah ceremony on Sunday, 13 December 2026.",
     images: [
       {
-        url: assetPath("/assets/gallery/gallery-suite.jpg"),
+        url: assetPath("/images/couple/couple-illustration.jpg"),
         width: 1200,
         height: 630,
         alt: "Aleena Siyad & Siyad T N Wedding Invitation"
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     title: "Aleena Siyad & Siyad T N — Nikah Wedding Invitation",
     description:
       "Nikah Ceremony & Wedding Celebration on Sunday, 13 December 2026.",
-    images: [assetPath("/assets/gallery/gallery-suite.jpg")]
+    images: [assetPath("/images/couple/couple-illustration.jpg")]
   }
 };
 
@@ -53,11 +53,13 @@ export default function RootLayout({
 }) {
   const paperTextureUrl = assetPath("/assets/paper-texture.webp");
   const faviconUrl = assetPath("/assets/favicon.svg");
+  const heroCoupleUrl = assetPath("/images/couple/couple-illustration.jpg");
 
   return (
     <html lang="en">
       <head>
         <link rel="icon" type="image/svg+xml" href={faviconUrl} />
+        <link rel="preload" as="image" href={heroCoupleUrl} />
         <style
           id="paper-bg-inject"
           dangerouslySetInnerHTML={{

@@ -1,7 +1,7 @@
 import { spawn } from "child_process";
 
 const CHROME_PATH = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe";
-const PORT = 9222;
+const PORT = 9223;
 
 const chromeProcess = spawn(CHROME_PATH, [
   `--remote-debugging-port=${PORT}`,
@@ -12,10 +12,20 @@ const chromeProcess = spawn(CHROME_PATH, [
   "http://localhost:3000"
 ]);
 
-await new Promise((r) => setTimeout(r, 1500));
+let versionRes = null;
+for (let i = 0; i < 15; i++) {
+  try {
+    versionRes = await fetch(`http://127.0.0.1:${PORT}/json/list`);
+    if (versionRes.ok) break;
+  } catch (e) {
+    await new Promise((r) => setTimeout(r, 400));
+  }
+}
+if (!versionRes || !versionRes.ok) {
+  throw new Error("Could not connect to Chrome debugging port " + PORT);
+}
 
 try {
-  const versionRes = await fetch(`http://127.0.0.1:${PORT}/json/list`);
   const pages = await versionRes.json();
   const page = pages.find((p) => p.type === "page") || pages[0];
 
@@ -56,17 +66,26 @@ try {
   await send("Runtime.enable");
 
   await send("Page.navigate", { url: "http://localhost:3000" });
-  await new Promise((r) => setTimeout(r, 2000));
+
+  // Wait for Next.js dev server on-demand compilation
+  for (let i = 0; i < 30; i++) {
+    const len = await evalCode(`document.body?.innerHTML?.length || 0`);
+    if (len > 1000) break;
+    await new Promise((r) => setTimeout(r, 500));
+  }
 
   // Skip the intro folio to access main page
   const skipResult = await evalCode(`
     (() => {
-      const btn = Array.from(document.querySelectorAll('button')).find(b => b.textContent.includes('Skip intro') || b.textContent.includes('Open Invitation'));
+      const btn = Array.from(document.querySelectorAll('button')).find(b => 
+        b.textContent.toLowerCase().includes('skip intro') || 
+        b.textContent.toLowerCase().includes('open invitation')
+      );
       if (btn) {
         btn.click();
         return 'Clicked button: ' + btn.textContent.trim();
       }
-      return 'No intro button found';
+      return 'No intro button found among: ' + Array.from(document.querySelectorAll('button')).map(b => b.textContent.trim()).join(', ');
     })()
   `);
   console.log("Intro button click:", skipResult);

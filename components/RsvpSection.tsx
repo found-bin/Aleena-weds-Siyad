@@ -2,7 +2,7 @@
 
 import React, { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { weddingConfig, assetPath } from "@/data/weddingConfig";
+import { weddingConfig, weddingImages } from "@/data/weddingConfig";
 import {
   CheckCircle2,
   HelpCircle,
@@ -140,14 +140,14 @@ export default function RsvpSection({ onShowToast }: RsvpSectionProps) {
               KINDLY REPLY
             </p>
             <h2
-              className="text-3xl sm:text-4xl md:text-5xl font-normal text-[#343C32] leading-tight mb-2 tracking-tight"
+              className="text-2xl sm:text-4xl font-normal text-[#343C32] leading-tight mb-2 tracking-tight"
               style={{ fontFamily: "var(--font-serif)" }}
             >
               Will You Join Us?
             </h2>
             <div className="w-44 sm:w-48 mx-auto my-3 opacity-85" aria-hidden="true">
               <img
-                src={assetPath("/assets/sage-divider.svg")}
+                src={weddingImages.decorations.dividerSvg}
                 alt=""
                 className="w-full h-auto"
               />

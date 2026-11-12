@@ -1,8 +1,9 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
-import { weddingConfig, assetPath } from "@/data/weddingConfig";
+import { motion, useReducedMotion } from "framer-motion";
+import { weddingConfig, weddingImages, assetPath } from "@/data/weddingConfig";
+import IllustratedImage from "@/components/IllustratedImage";
 import { Calendar, ChevronDown } from "lucide-react";
 
 interface HeroProps {
@@ -10,14 +11,16 @@ interface HeroProps {
 }
 
 export default function Hero({ onAddToCalendar }: HeroProps) {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
-    <header className="relative min-h-[100svh] flex flex-col items-center justify-between text-center px-4 sm:px-6 pt-[max(2.5rem,env(safe-area-inset-top))] pb-[max(2rem,env(safe-area-inset-bottom))] overflow-hidden">
+    <header className="relative min-h-[100svh] flex flex-col items-center justify-between text-center px-4 sm:px-6 pt-[max(2.5rem,env(safe-area-inset-top))] pb-[max(2.5rem,env(safe-area-inset-bottom))] overflow-hidden">
       {/* Decorative Sage Divider Top */}
       <motion.div
-        initial={{ opacity: 0, y: -12 }}
+        initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className="w-full max-w-[280px] sm:max-w-[340px] mb-3 opacity-85 pointer-events-none mx-auto"
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        className="w-full max-w-[220px] sm:max-w-[280px] mb-3 opacity-80 pointer-events-none mx-auto"
         aria-hidden="true"
       >
         <img
@@ -28,119 +31,112 @@ export default function Hero({ onAddToCalendar }: HeroProps) {
       </motion.div>
 
       <div className="w-full max-w-[760px] mx-auto relative z-10 flex flex-col items-center flex-grow justify-center py-2">
-        {/* Arabic Bismillah Calligraphy & Text */}
+        {/* Arabic Bismillah & English Translation with Generous, Balanced Spacing */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.97 }}
+          initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.1 }}
-          className="mb-3 max-w-[540px] mx-auto w-full"
+          transition={{ duration: 0.7, delay: 0.1 }}
+          className="mb-5 sm:mb-7 max-w-[580px] mx-auto w-full text-center"
         >
-          <div className="max-w-[300px] sm:max-w-[350px] mx-auto mb-1.5">
-            <img
-              src={assetPath("/assets/bismillah-sage.svg")}
-              alt="Bismillahir Rahmanir Rahim in Arabic Calligraphy"
-              className="w-full h-auto drop-shadow-sm"
-            />
-          </div>
+          {/* Sacred Arabic Text */}
           <p
             lang="ar"
             dir="rtl"
-            className="font-arabic text-xl sm:text-2xl text-[#343C32] font-normal leading-[1.8] tracking-normal my-1 select-text"
+            className="font-arabic text-[clamp(1.75rem,4.4vw,2.65rem)] text-[#2F372C] font-normal leading-[2.1] tracking-wide select-text text-center"
           >
             {weddingConfig.islamic.bismillahArabic}
           </p>
+
+          {/* English Translation — Smaller, Subtle, Well-Spaced */}
           <p
-            className="text-xs sm:text-sm italic text-[#4A5547] mt-1 font-medium leading-relaxed max-w-[480px] mx-auto"
+            className="text-[0.72rem] sm:text-xs italic text-[#74866D] mt-3 sm:mt-4 font-normal tracking-[0.04em] max-w-[460px] mx-auto leading-relaxed opacity-90"
             style={{ fontFamily: "var(--font-serif)" }}
           >
             “{weddingConfig.islamic.bismillahEnglish}”
           </p>
         </motion.div>
 
-        {/* Champagne Gold Filigree Rule */}
-        <div
-          className="flex items-center justify-center gap-3 text-[#C6AD76] my-2 sm:my-3 opacity-80"
-          aria-hidden="true"
+        {/* Feature Couple Photograph / Portrait Frame */}
+        <motion.div
+          initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 16, scale: 0.98 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.85, delay: 0.25, ease: "easeOut" }}
+          className="relative my-4 sm:my-6 mx-auto w-full max-w-[250px] sm:max-w-[290px] md:max-w-[320px]"
         >
-          <span className="w-10 sm:w-16 h-[1px] bg-gradient-to-r from-transparent via-[#C6AD76] to-transparent" />
-          <span className="text-[0.65rem]">✦</span>
-          <span className="w-10 sm:w-16 h-[1px] bg-gradient-to-r from-transparent via-[#C6AD76] to-transparent" />
-        </div>
+          <div className="p-2 sm:p-2.5 rounded-2xl bg-[#FFFEFA] border border-[#C6AD76]/45 shadow-[0_12px_36px_-6px_rgba(52,60,50,0.15)]">
+            <div className="overflow-hidden rounded-xl bg-[#F7F3E9]">
+              <IllustratedImage
+                src={weddingImages.couple.illustration.src}
+                fallbackSrc={weddingImages.couple.illustration.fallbackSrc}
+                alt={weddingImages.couple.illustration.alt}
+                aspectRatio="4/5"
+                priority={true}
+                className="w-full h-full object-cover object-top hover:scale-[1.02] transition-transform duration-700 ease-out"
+              />
+            </div>
+          </div>
+        </motion.div>
 
         {/* Lead Invitation Text */}
         <motion.div
-          initial={{ opacity: 0, y: 8 }}
+          initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.75, delay: 0.25 }}
-          className="w-full"
+          transition={{ duration: 0.75, delay: 0.35 }}
+          className="w-full mt-1"
         >
           <p
-            className="text-[0.68rem] sm:text-xs tracking-[0.25em] text-[#74866D] font-semibold mb-1 uppercase"
+            className="text-[0.68rem] sm:text-xs tracking-[0.28em] text-[#74866D] font-semibold mb-1.5 uppercase"
             style={{ fontFamily: "var(--font-display)" }}
           >
             Together with their families
           </p>
           <p
-            className="hero-lead-text italic text-[#4A5547] max-w-[560px] mx-auto mb-3 sm:mb-4 leading-relaxed"
+            className="hero-lead-text italic text-[#4A5547] max-w-[560px] mx-auto mb-3 sm:mb-4 leading-relaxed text-xs sm:text-sm md:text-base font-normal"
             style={{ fontFamily: "var(--font-serif)" }}
           >
             We cordially invite you to celebrate the Nikah of our beloved daughter
           </p>
         </motion.div>
 
-        {/* Couple Names Editorial Typography (Primary Focal Point) */}
+        {/* Couple Names — Strictly Single Line with Responsive Fluid Typography */}
         <motion.div
-          initial={{ opacity: 0, y: 14 }}
+          initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.95, delay: 0.4 }}
-          className="my-2 sm:my-3.5 w-full"
+          transition={{ duration: 0.85, delay: 0.45 }}
+          className="my-3 sm:my-4 w-full flex items-center justify-center text-center overflow-hidden"
         >
           <h1
-            className="hero-couple-title font-normal text-[#343C32] break-words"
+            className="hero-couple-title font-normal text-[#343C32] text-center select-text"
             style={{ fontFamily: "var(--font-serif)" }}
           >
-            {weddingConfig.couple.bride.fullName}
-          </h1>
-
-          <div
-            className="flex items-center justify-center gap-3 sm:gap-4 my-1.5 sm:my-2"
-            aria-hidden="true"
-          >
-            <span className="w-8 sm:w-14 h-[1px] bg-[#C6AD76]/45" />
-            <em
-              className="text-xl sm:text-2xl md:text-3xl text-[#C6AD76] font-normal leading-none"
-              style={{ fontFamily: "var(--font-script)" }}
+            <span>{weddingConfig.couple.bride.fullName}</span>
+            <span
+              className="text-[#C6AD76] font-normal italic mx-1.5 sm:mx-2.5"
+              style={{ fontFamily: "var(--font-script)", fontSize: "1.08em" }}
             >
-              with
-            </em>
-            <span className="w-8 sm:w-14 h-[1px] bg-[#C6AD76]/45" />
-          </div>
-
-          <h1
-            className="hero-couple-title font-normal text-[#343C32] break-words"
-            style={{ fontFamily: "var(--font-serif)" }}
-          >
-            {weddingConfig.couple.groom.fullName}
+              &amp;
+            </span>
+            <span>{weddingConfig.couple.groom.fullName}</span>
           </h1>
         </motion.div>
 
         {/* Groom Lineage Subtext */}
         <motion.div
-          initial={{ opacity: 0 }}
+          initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.55 }}
-          className="text-xs sm:text-sm text-[#4A5547] max-w-[520px] mx-auto leading-relaxed my-1.5"
+          transition={{ duration: 0.75, delay: 0.55 }}
+          className="text-xs sm:text-sm text-[#4A5547] max-w-[520px] mx-auto leading-relaxed my-2"
         >
-          <strong className="text-[#343C32] font-semibold block">
+          <strong className="text-[#343C32] font-semibold block mb-0.5">
             {weddingConfig.couple.groom.family.parents}
           </strong>
-          <span className="text-[#817E72] text-[0.76rem] sm:text-xs block mt-0.5">
+          <span className="text-[#817E72] text-[0.76rem] sm:text-xs block">
             {weddingConfig.couple.groom.family.residence}
           </span>
         </motion.div>
 
         <p
-          className="text-xl sm:text-2xl md:text-3xl text-[#C6AD76] my-1.5 sm:my-2"
+          className="text-xl sm:text-2xl text-[#C6AD76] my-2"
           style={{ fontFamily: "var(--font-script)" }}
         >
           Insha&apos;Allah
@@ -148,58 +144,58 @@ export default function Hero({ onAddToCalendar }: HeroProps) {
 
         {/* Date Cluster Stationery Tile */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.97 }}
+          initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.65 }}
-          className="inline-flex items-center justify-center gap-4 sm:gap-8 bg-[#FFFEFA]/95 border border-[#C6AD76]/45 rounded-2xl shadow-sm px-5 sm:px-9 py-3 sm:py-3.5 my-3 sm:my-4 max-w-[95%]"
+          transition={{ duration: 0.75, delay: 0.65 }}
+          className="inline-flex items-center justify-center gap-5 sm:gap-10 bg-[#FFFEFA] border border-[#C6AD76]/50 rounded-2xl shadow-sm px-6 sm:px-10 py-3 sm:py-3.5 my-3 sm:my-5 max-w-[95%]"
         >
           <div className="flex flex-col items-center">
-            <span className="text-[0.6rem] sm:text-[0.65rem] tracking-[0.2em] text-[#74866D] font-semibold uppercase">
+            <span className="text-[0.6rem] sm:text-[0.65rem] tracking-[0.22em] text-[#74866D] font-bold uppercase mb-0.5">
               DATE
             </span>
             <strong
-              className="text-base sm:text-xl md:text-2xl font-bold text-[#343C32] tracking-wide"
+              className="text-sm sm:text-lg md:text-xl font-bold text-[#343C32] tracking-wide"
               style={{ fontFamily: "var(--font-serif)" }}
             >
               13 DEC 2026
             </strong>
-            <span className="text-[0.72rem] sm:text-xs text-[#817E72]">Sunday</span>
+            <span className="text-[0.72rem] sm:text-xs text-[#817E72] mt-0.5">Sunday</span>
           </div>
 
           <div
-            className="w-[1px] h-8 sm:h-9 bg-gradient-to-b from-transparent via-[#C6AD76] to-transparent"
+            className="w-[1px] h-8 sm:h-10 bg-gradient-to-b from-transparent via-[#C6AD76] to-transparent"
             aria-hidden="true"
           />
 
           <div className="flex flex-col items-center">
-            <span className="text-[0.6rem] sm:text-[0.65rem] tracking-[0.2em] text-[#74866D] font-semibold uppercase">
+            <span className="text-[0.6rem] sm:text-[0.65rem] tracking-[0.22em] text-[#74866D] font-bold uppercase mb-0.5">
               NIKAH CEREMONY
             </span>
             <strong
-              className="text-base sm:text-xl md:text-2xl font-bold text-[#343C32] tracking-wide"
+              className="text-sm sm:text-lg md:text-xl font-bold text-[#343C32] tracking-wide"
               style={{ fontFamily: "var(--font-serif)" }}
             >
               11:00 AM
             </strong>
-            <span className="text-[0.72rem] sm:text-xs text-[#817E72]">Kuthiathode Masjid</span>
+            <span className="text-[0.72rem] sm:text-xs text-[#817E72] mt-0.5">Kuthiathode Masjid</span>
           </div>
         </motion.div>
 
         {/* Action Buttons */}
         <motion.div
-          initial={{ opacity: 0, y: 10 }}
+          initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.75 }}
-          className="flex items-center justify-center gap-3 sm:gap-4 flex-wrap my-2"
+          transition={{ duration: 0.75, delay: 0.75 }}
+          className="flex items-center justify-center gap-3.5 sm:gap-4 flex-wrap my-2"
         >
-          <a href="#events" className="btn btn-sage-primary">
+          <a href="#events" className="btn btn-sage-primary text-xs sm:text-sm">
             <span>View Schedule</span>
             <ChevronDown className="w-4 h-4 animate-bounce" />
           </a>
           <button
             type="button"
             onClick={onAddToCalendar}
-            className="btn btn-ivory-outline"
+            className="btn btn-ivory-outline text-xs sm:text-sm"
           >
             <Calendar className="w-4 h-4 text-[#C6AD76]" />
             <span>Add to Calendar</span>
@@ -210,7 +206,7 @@ export default function Hero({ onAddToCalendar }: HeroProps) {
       {/* Subtle Scroll Cue */}
       <div className="pt-2 text-center text-[#817E72] text-[0.65rem] tracking-[0.24em] flex flex-col items-center gap-1 opacity-75">
         <span>SCROLL TO EXPLORE</span>
-        <span className="text-sm animate-bounce" aria-hidden="true">&darr;</span>
+        <span className="text-xs animate-bounce" aria-hidden="true">&darr;</span>
       </div>
     </header>
   );

@@ -6,12 +6,10 @@ import Hero from "@/components/Hero";
 import FamilySection from "@/components/FamilySection";
 import Countdown from "@/components/Countdown";
 import ScheduleSection from "@/components/ScheduleSection";
-import GallerySection from "@/components/GallerySection";
 import RsvpSection from "@/components/RsvpSection";
 import SharingBar from "@/components/SharingBar";
 import ClosingSection from "@/components/ClosingSection";
 import AudioPlayer from "@/components/AudioPlayer";
-import PetalsLayer from "@/components/PetalsLayer";
 import { weddingConfig } from "@/data/weddingConfig";
 
 export default function WeddingPage() {
@@ -70,10 +68,7 @@ export default function WeddingPage() {
 
   return (
     <>
-      {/* Falling Rose Petals Layer */}
-      <PetalsLayer />
-
-      {/* Cinematic 3D Envelope Opening Intro (Full-Screen) */}
+      {/* Elegant Opening Card Experience */}
       <EnvelopeIntro
         isOpen={isEnvelopeOpen}
         onOpened={() => setIsEnvelopeOpen(true)}
@@ -87,7 +82,7 @@ export default function WeddingPage() {
 
       {/* Continuous Wedding Invitation Page */}
       <main
-        className={`w-full transition-opacity duration-700 ${
+        className={`w-full transition-opacity duration-1000 ${
           isEnvelopeOpen ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
         aria-hidden={!isEnvelopeOpen}
@@ -96,7 +91,6 @@ export default function WeddingPage() {
         <FamilySection />
         <Countdown />
         <ScheduleSection />
-        <GallerySection />
         <RsvpSection onShowToast={showToast} />
         <SharingBar
           onShowToast={showToast}

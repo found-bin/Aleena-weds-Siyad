@@ -124,7 +124,7 @@
 
 
   // ===================================================================
-  // 2. BACKGROUND AMBIENCE & MUSIC CONTROLS
+  // 2. BACKGROUND MUSIC CONTROLS
   // ===================================================================
   let isAudioPlaying = false;
 
@@ -139,7 +139,7 @@
       isAudioPlaying = true;
       audioToggleBtn.classList.add("is-playing");
       audioToggleBtn.setAttribute("aria-pressed", "true");
-      audioLabel.textContent = "Pause Ambience";
+      audioLabel.textContent = "Pause Music";
     } catch (err) {
       // Audio autoplay may be prevented without interaction
       if (!soft) {
@@ -148,7 +148,7 @@
       isAudioPlaying = false;
       audioToggleBtn.classList.remove("is-playing");
       audioToggleBtn.setAttribute("aria-pressed", "false");
-      audioLabel.textContent = "Play Ambience";
+      audioLabel.textContent = "Play Music";
     }
   }
 
@@ -158,7 +158,7 @@
     isAudioPlaying = false;
     audioToggleBtn.classList.remove("is-playing");
     audioToggleBtn.setAttribute("aria-pressed", "false");
-    audioLabel.textContent = "Play Ambience";
+    audioLabel.textContent = "Play Music";
   }
 
   if (audioToggleBtn) {

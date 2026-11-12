@@ -12,7 +12,7 @@ module.exports = (phase) => {
 
   const config = {
     reactStrictMode: true,
-    output: "export",
+    ...(isDev ? {} : { output: "export" }),
     env: {
       NEXT_PUBLIC_BASE_PATH: basePath
     },
