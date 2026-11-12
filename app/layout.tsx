@@ -2,12 +2,16 @@ import type { Metadata, Viewport } from "next";
 import { assetPath } from "@/data/weddingConfig";
 import "./globals.css";
 
+const isVercel = Boolean(process.env.VERCEL === "1" || process.env.VERCEL_ENV);
+const isProd = process.env.NODE_ENV === "production";
+const siteUrl = process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}`
+  : isProd && !isVercel
+  ? "https://welkincedev.github.io/wedding_invite_one"
+  : "http://localhost:3000";
+
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NODE_ENV === "production"
-      ? "https://welkincedev.github.io/wedding_invite_one"
-      : "http://localhost:3000"
-  ),
+  metadataBase: new URL(siteUrl),
   title: "Aleena Siyad & Siyad T N — The Sage Heirloom Wedding Invitation",
   description:
     "Together with their families, Aleena Siyad & Siyad T N cordially invite you to celebrate their Nikah ceremony on Sunday, 13 December 2026.",
