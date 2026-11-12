@@ -67,22 +67,10 @@ export default function ScheduleSection() {
                 />
 
                 {/* Top Subtle Label Banner */}
-                <div className="absolute top-4 left-4 right-4 flex items-center justify-between gap-2 z-10">
-                  <span className="inline-flex items-center px-3.5 py-1 rounded-full text-[0.65rem] tracking-[0.22em] font-bold uppercase bg-[#FFFEFA]/95 text-[#343C32] border border-[#C6AD76]/50 shadow-sm backdrop-blur-sm">
+                <div className="absolute top-4 left-4 z-10">
+                  <span className="inline-flex items-center px-3.5 py-1 rounded-full text-[0.65rem] tracking-[0.22em] font-bold uppercase bg-[#FFFEFA]/95 text-[#343C32] border border-[#B09866]/40 shadow-sm backdrop-blur-sm">
                     {event.category}
                   </span>
-
-                  {event.timeConfirmed ? (
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[0.62rem] tracking-wider font-semibold uppercase bg-[#74866D] text-[#FFFEFA] shadow-sm">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#FFFEFA] animate-pulse" />
-                      Confirmed
-                    </span>
-                  ) : (
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[0.62rem] tracking-wider font-semibold uppercase bg-[#FFFEFA]/95 text-[#817E72] border border-[#C6AD76]/40 shadow-sm">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#C6AD76]" />
-                      To be announced
-                    </span>
-                  )}
                 </div>
               </div>
 
@@ -101,36 +89,21 @@ export default function ScheduleSection() {
                   </p>
 
                   {/* Structured Details Box */}
-                  <div className="rounded-2xl bg-[#F7F3E9]/50 border border-[#C6AD76]/30 p-5 sm:p-6 flex flex-col gap-4 mb-7">
+                  <div className="rounded-2xl bg-[#F7F3E9]/50 border border-[#B09866]/30 p-5 sm:p-6 flex flex-col gap-4 mb-7">
                     {/* Date & Time Row */}
-                    {event.timeConfirmed && event.dateDisplay ? (
-                      <div className="flex items-start gap-3.5 text-xs sm:text-sm">
-                        <Calendar className="w-4 h-4 text-[#74866D] shrink-0 mt-0.5" />
-                        <div className="flex flex-col sm:flex-row sm:items-center sm:gap-2 text-[#343C32]">
-                          <strong className="font-semibold text-sm sm:text-base">{event.dateDisplay}</strong>
-                          <span className="hidden sm:inline text-[#C6AD76]">&middot;</span>
-                          <span className="flex items-center gap-1.5 text-[#4A5547] font-medium text-xs sm:text-sm">
-                            <Clock className="w-3.5 h-3.5 text-[#74866D]" />
-                            {event.timeDisplay}
-                          </span>
-                        </div>
+                    <div className="flex items-start gap-3.5 text-xs sm:text-sm">
+                      <Calendar className="w-4 h-4 text-[#74866D] shrink-0 mt-0.5" />
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:gap-2 text-[#343C32]">
+                        <strong className="font-semibold text-sm sm:text-base">{event.dateDisplay}</strong>
+                        <span className="hidden sm:inline text-[#B09866]">&middot;</span>
+                        <span className="flex items-center gap-1.5 text-[#4A5335] font-semibold text-xs sm:text-sm">
+                          <Clock className="w-3.5 h-3.5 text-[#74866D]" />
+                          {event.timeDisplay}
+                        </span>
                       </div>
-                    ) : (
-                      /* Honest Handling of Unconfirmed Reception Schedule */
-                      <div className="flex items-start gap-3.5 text-xs sm:text-sm text-[#817E72]">
-                        <Clock className="w-4 h-4 text-[#C6AD76] shrink-0 mt-0.5" />
-                        <div>
-                          <span className="font-semibold text-[#343C32] block text-sm sm:text-base">
-                            Date &amp; Timing
-                          </span>
-                          <span className="block text-xs text-[#817E72] mt-0.5">
-                            To be announced by the family once confirmed
-                          </span>
-                        </div>
-                      </div>
-                    )}
+                    </div>
 
-                    <div className="w-full h-[1px] bg-[#C6AD76]/25" aria-hidden="true" />
+                    <div className="w-full h-[1px] bg-[#B09866]/20" aria-hidden="true" />
 
                     {/* Venue & Location Row */}
                     <div className="flex items-start gap-3.5 text-xs sm:text-sm">
@@ -155,7 +128,7 @@ export default function ScheduleSection() {
                     rel="noopener noreferrer"
                     className="btn btn-sage-primary w-full py-4 text-xs sm:text-sm font-semibold tracking-wider flex items-center justify-center gap-2.5 shadow-sm hover:shadow-md transition-all"
                   >
-                    <MapPin className="w-4 h-4 text-[#C6AD76]" />
+                    <MapPin className="w-4 h-4 text-[#B09866]" />
                     <span>Get Directions</span>
                     <ExternalLink className="w-3.5 h-3.5 opacity-75 ml-0.5" />
                   </a>
@@ -164,10 +137,6 @@ export default function ScheduleSection() {
             </motion.article>
           ))}
         </div>
-
-        <p className="text-center text-xs italic text-[#817E72] max-w-[550px] mx-auto">
-          <em>Note:</em> The reception schedule will be announced and shared with loved ones before the celebration.
-        </p>
       </div>
     </section>
   );

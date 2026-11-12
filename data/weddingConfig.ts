@@ -222,15 +222,15 @@ export const weddingConfig: WeddingConfig = {
       fullName: "Aleena Siyad",
       family: {
         parents: "Mr. Siyad Ommerkutty & Mrs. Shamla",
-        residence: "Pozhiyil House, Kodamthuruth",
-        lineage: "Granddaughter of Ms. Amina & the late Abdul Karim; Granddaughter of the late Beevi & the late Ommerkutty."
+        residence: "Pozhiyil House, Kodamthuruthu",
+        lineage: "Granddaughter of Ms. Amina & the late Abdul Karim, and of the late Beevi & the late Ommerkutty."
       }
     },
     groom: {
       firstName: "Siyad",
       fullName: "Siyad T N",
       family: {
-        parents: "S/o Mr. Nazar T M & Mrs. Jumailath",
+        parents: "Mr. Nazar T M & Mrs. Jumailath",
         residence: "Thankichira, CMC 33, Cherthala",
         blessingNote: "Cherishing the lifelong guidance, prayers, and deep affection of loved ones near and dear as we welcome our new daughter into our hearts."
       }
@@ -240,9 +240,9 @@ export const weddingConfig: WeddingConfig = {
   },
   islamic: {
     bismillahArabic: "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
-    bismillahEnglish: "In the Name of Allah, The most Beneficent & Most Merciful",
+    bismillahEnglish: "In the Name of Allah, The Most Beneficent & Most Merciful",
     duaEnglish: "May Allah bless this union with love, mercy, and barakah.",
-    closingWish: "Best wishes, Dears & Nears"
+    closingWish: "Best Wishes from Family & Friends"
   },
   dateTime: {
     gregorianDateString: "Sunday, 13 December 2026",
@@ -278,13 +278,14 @@ export const weddingConfig: WeddingConfig = {
       fallbackSrc: weddingImages.venues.reception.fallbackSrc,
       imageAlt: weddingImages.venues.reception.alt,
       imageCaption: "Celebration Venue Illustration",
-      // Unconfirmed: Date & time not invented per strict project instructions
-      dateConfirmed: false,
-      timeConfirmed: false,
+      dateDisplay: "Sunday, 13 December 2026",
+      dateConfirmed: true,
+      timeDisplay: "12:00 PM",
+      timeConfirmed: true,
       venueName: "The Palace Convention Centre",
       venueAddress: "Chandiroor, Alappuzha, Kerala",
       mapsSearchUrl: "https://www.google.com/maps/search/?api=1&query=The+Palace+Convention+Centre+Chandiroor+Kerala",
-      description: "A celebratory banquet gathering of greetings and dinner with loved ones, relatives, and friends. Schedule to be announced."
+      description: "A celebratory banquet gathering of greetings and lunch with family, relatives, and loved ones."
     }
   ],
   rsvp: {

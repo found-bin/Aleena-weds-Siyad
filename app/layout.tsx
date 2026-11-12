@@ -27,10 +27,10 @@ export const metadata: Metadata = {
       "Together with their families, Aleena Siyad & Siyad T N cordially invite you to celebrate their Nikah ceremony on Sunday, 13 December 2026.",
     images: [
       {
-        url: assetPath("/images/couple/couple-illustration.jpg"),
+        url: assetPath("/images/og-preview.jpg"),
         width: 1200,
         height: 630,
-        alt: "Aleena Siyad & Siyad T N Wedding Invitation"
+        alt: "Aleena Siyad & Siyad T N — A Sacred Nikah Invitation"
       }
     ]
   },
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     title: "Aleena Siyad & Siyad T N — Nikah Wedding Invitation",
     description:
       "Nikah Ceremony & Wedding Celebration on Sunday, 13 December 2026.",
-    images: [assetPath("/images/couple/couple-illustration.jpg")]
+    images: [assetPath("/images/og-preview.jpg")]
   }
 };
 

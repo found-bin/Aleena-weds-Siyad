@@ -58,33 +58,35 @@ export default function ClosingSection() {
             <span className="w-10 sm:w-16 h-[1px] bg-gradient-to-r from-transparent via-[#C6AD76] to-transparent" />
           </div>
 
-          {/* Couple Names — Single Line */}
-          <h2
-            className="text-[clamp(1.15rem,4.4vw,2.75rem)] font-normal text-white leading-tight mb-4 tracking-wide whitespace-nowrap text-center"
-            style={{ fontFamily: "var(--font-serif)" }}
-          >
-            <span>{weddingConfig.couple.bride.fullName}</span>{" "}
-            <span
-              className="text-[#C6AD76] italic font-normal text-[0.85em] mx-1.5"
-              style={{ fontFamily: "var(--font-script)" }}
+          {/* Couple Names */}
+          <div className="flex flex-col items-center justify-center my-4 text-center">
+            <h2
+              className="text-2xl sm:text-4xl md:text-5xl font-normal text-white tracking-tight leading-tight"
+              style={{ fontFamily: "var(--font-serif)" }}
             >
-              &amp;
-            </span>{" "}
-            <span>{weddingConfig.couple.groom.fullName}</span>
-          </h2>
+              Aleena Siyad
+            </h2>
+            <em
+              className="my-1 text-sm sm:text-base text-[#B09866] font-normal leading-none"
+              style={{ fontFamily: "var(--font-serif)" }}
+            >
+              with
+            </em>
+            <h2
+              className="text-2xl sm:text-4xl md:text-5xl font-normal text-white tracking-tight leading-tight"
+              style={{ fontFamily: "var(--font-serif)" }}
+            >
+              Siyad T N
+            </h2>
+          </div>
 
           {/* Closing Wish with Generous Vertical Space */}
           <p
-            className="text-xs sm:text-sm tracking-[0.24em] uppercase text-[#C6AD76] mb-8 font-medium"
+            className="text-xs sm:text-sm tracking-[0.24em] uppercase text-[#B09866] mt-4 mb-2 font-medium"
             style={{ fontFamily: "var(--font-serif)" }}
           >
             {weddingConfig.islamic.closingWish}
           </p>
-
-          {/* Refined Date & Venue Identifier */}
-          <div className="inline-block text-[0.72rem] sm:text-xs tracking-[0.22em] text-[#D8CFBC] uppercase border border-[#C6AD76]/30 rounded-full px-6 py-2.5 bg-white/[0.03] backdrop-blur-sm">
-            13 December 2026 &middot; Kuthiathode Juma Masjid
-          </div>
         </motion.div>
       </section>
 

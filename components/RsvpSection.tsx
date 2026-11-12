@@ -19,7 +19,7 @@ interface RsvpSectionProps {
   onShowToast: (msg: string) => void;
 }
 
-type AttendanceOption = "Joyfully Yes!" | "Maybe" | "Respectfully No!";
+type AttendanceOption = "Joyfully Yes!" | "Maybe" | "Respectfully No";
 
 export default function RsvpSection({ onShowToast }: RsvpSectionProps) {
   const [selectedAttendance, setSelectedAttendance] = useState<AttendanceOption | null>(null);
@@ -47,11 +47,11 @@ export default function RsvpSection({ onShowToast }: RsvpSectionProps) {
       label: "Maybe",
       description: "Hoping to attend, will confirm soon",
       icon: HelpCircle,
-      accentClass: "text-[#C6AD76]"
+      accentClass: "text-[#B09866]"
     },
     {
-      label: "Respectfully No!",
-      description: "Sending our warm prayers and best wishes from afar",
+      label: "Respectfully No",
+      description: "Sending warm prayers and best wishes from afar",
       icon: XCircle,
       accentClass: "text-[#817E72]"
     }
@@ -134,7 +134,7 @@ export default function RsvpSection({ onShowToast }: RsvpSectionProps) {
           {/* Section Header */}
           <header className="text-center mb-7 sm:mb-9">
             <p
-              className="text-xs tracking-[0.28em] text-[#C6AD76] font-semibold mb-2 uppercase"
+              className="text-xs tracking-[0.28em] text-[#B09866] font-bold mb-2 uppercase"
               style={{ fontFamily: "var(--font-display)" }}
             >
               KINDLY REPLY
@@ -143,7 +143,7 @@ export default function RsvpSection({ onShowToast }: RsvpSectionProps) {
               className="text-2xl sm:text-4xl font-normal text-[#343C32] leading-tight mb-2 tracking-tight"
               style={{ fontFamily: "var(--font-serif)" }}
             >
-              Will You Join Us?
+              RSVP Your Attendance
             </h2>
             <div className="w-44 sm:w-48 mx-auto my-3 opacity-85" aria-hidden="true">
               <img
@@ -176,10 +176,10 @@ export default function RsvpSection({ onShowToast }: RsvpSectionProps) {
                       key={opt.label}
                       type="button"
                       onClick={() => handleSelectAttendance(opt.label)}
-                      className="group w-full p-4 sm:p-5 rounded-2xl bg-white border border-[#C6AD76]/40 hover:border-[#74866D] hover:bg-[#F7F3E9]/40 active:scale-[0.985] transition-all duration-200 shadow-sm hover:shadow text-left flex items-center justify-between gap-4"
+                      className="group w-full p-4 sm:p-5 rounded-2xl bg-white border border-[#B09866]/40 hover:border-[#74866D] hover:bg-[#FBF9F4] active:scale-[0.985] transition-all duration-200 shadow-sm hover:shadow text-left flex items-center justify-between gap-4"
                     >
                       <div className="flex items-center gap-3.5">
-                        <span className={`w-8 h-8 rounded-full bg-[#F7F3E9] flex items-center justify-center shrink-0 ${opt.accentClass} group-hover:scale-110 transition-transform`}>
+                        <span className={`w-8 h-8 rounded-full bg-[#FBF9F4] flex items-center justify-center shrink-0 ${opt.accentClass} group-hover:scale-110 transition-transform`}>
                           <Icon className="w-5 h-5" />
                         </span>
                         <div>
@@ -194,18 +194,12 @@ export default function RsvpSection({ onShowToast }: RsvpSectionProps) {
                           </span>
                         </div>
                       </div>
-                      <span className="text-xs text-[#C6AD76] font-semibold shrink-0 group-hover:translate-x-1 transition-transform">
+                      <span className="text-xs text-[#B09866] font-semibold shrink-0 group-hover:translate-x-1 transition-transform">
                         Select &rarr;
                       </span>
                     </button>
                   );
                 })}
-
-                {weddingConfig.rsvp.isPlaceholder && (
-                  <p className="text-[0.72rem] text-[#817E72] italic text-center mt-3">
-                    Note: WhatsApp RSVP number will open with the family&apos;s contact.
-                  </p>
-                )}
               </motion.div>
             ) : (
               /* STEP B: Show Form After Selection */
@@ -257,8 +251,8 @@ export default function RsvpSection({ onShowToast }: RsvpSectionProps) {
                   </div>
                 )}
 
-                {/* Gentle Message for "Respectfully No!" */}
-                {selectedAttendance === "Respectfully No!" && (
+                {/* Gentle Message for "Respectfully No" */}
+                {selectedAttendance === "Respectfully No" && (
                   <div className="text-center py-3 px-4 bg-[#F7F3E9]/80 border border-[#C6AD76]/35 rounded-xl shadow-sm">
                     <p
                       className="text-base sm:text-lg font-normal text-[#343C32] leading-snug italic"

@@ -70,13 +70,13 @@ export default function Countdown() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.85 }}
-          className="bg-[#FFFEFA]/90 border border-[#C6AD76]/40 rounded-3xl p-5 sm:p-12 max-w-[780px] mx-auto shadow-sm"
+          className="bg-[#FFFEFA] border border-[#B09866]/40 rounded-3xl p-6 sm:p-12 max-w-[780px] mx-auto shadow-sm"
         >
           <p
-            className="text-xs tracking-[0.28em] text-[#74866D] font-semibold mb-2 uppercase"
+            className="text-xs tracking-[0.28em] text-[#74866D] font-bold mb-2 uppercase"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            Counting The Moments
+            COUNTING THE MOMENTS
           </p>
           <h2
             className="text-2xl sm:text-4xl font-normal text-[#343C32] leading-tight mb-2 tracking-tight"
@@ -88,80 +88,69 @@ export default function Countdown() {
             Sunday, 13 December 2026 &middot; 11:00 AM IST &middot; Kuthiathode Juma Masjid
           </p>
 
+          {/* Prominent Serif Numeral Cards: 2x2 on mobile, 4-in-a-row on desktop */}
           <div
-            className="flex items-center justify-center gap-1.5 sm:gap-4 my-6 select-none"
+            className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-[580px] mx-auto my-6 sm:my-8 select-none"
             aria-live="polite"
           >
             {/* Days */}
-            <div className="flex-1 max-w-[110px] bg-[#F7F3E9]/80 border border-[#C6AD76]/30 rounded-xl py-3 sm:py-5 px-1.5 sm:px-2 shadow-sm min-w-0">
+            <div className="bg-[#FBF9F4] border border-[#B09866]/40 rounded-2xl py-4 sm:py-6 px-3 shadow-sm flex flex-col items-center justify-center">
               <span
-                className="block text-xl sm:text-4xl md:text-5xl font-bold text-[#343C32] tabular-nums"
+                className="block text-4xl sm:text-5xl md:text-6xl font-normal text-[#343C32] tabular-nums leading-none"
                 style={{ fontFamily: "var(--font-serif)" }}
               >
                 {timeLeft.days}
               </span>
               <span
-                className="block text-[0.55rem] sm:text-xs tracking-[0.16em] sm:tracking-[0.2em] text-[#74866D] font-semibold mt-1 uppercase"
+                className="block text-[0.62rem] sm:text-xs tracking-[0.22em] text-[#74866D] font-bold mt-2 uppercase"
                 style={{ fontFamily: "var(--font-display)" }}
               >
                 Days
               </span>
             </div>
 
-            <span className="hidden sm:inline text-2xl font-serif text-[#C6AD76]/60 pb-3">
-              :
-            </span>
-
             {/* Hours */}
-            <div className="flex-1 max-w-[110px] bg-[#F7F3E9]/80 border border-[#C6AD76]/30 rounded-xl py-3 sm:py-5 px-1.5 sm:px-2 shadow-sm min-w-0">
+            <div className="bg-[#FBF9F4] border border-[#B09866]/40 rounded-2xl py-4 sm:py-6 px-3 shadow-sm flex flex-col items-center justify-center">
               <span
-                className="block text-xl sm:text-4xl md:text-5xl font-bold text-[#343C32] tabular-nums"
+                className="block text-4xl sm:text-5xl md:text-6xl font-normal text-[#343C32] tabular-nums leading-none"
                 style={{ fontFamily: "var(--font-serif)" }}
               >
                 {timeLeft.hours}
               </span>
               <span
-                className="block text-[0.55rem] sm:text-xs tracking-[0.16em] sm:tracking-[0.2em] text-[#74866D] font-semibold mt-1 uppercase"
+                className="block text-[0.62rem] sm:text-xs tracking-[0.22em] text-[#74866D] font-bold mt-2 uppercase"
                 style={{ fontFamily: "var(--font-display)" }}
               >
                 Hours
               </span>
             </div>
 
-            <span className="hidden sm:inline text-2xl font-serif text-[#C6AD76]/60 pb-3">
-              :
-            </span>
-
             {/* Minutes */}
-            <div className="flex-1 max-w-[110px] bg-[#F7F3E9]/80 border border-[#C6AD76]/30 rounded-xl py-3 sm:py-5 px-1.5 sm:px-2 shadow-sm min-w-0">
+            <div className="bg-[#FBF9F4] border border-[#B09866]/40 rounded-2xl py-4 sm:py-6 px-3 shadow-sm flex flex-col items-center justify-center">
               <span
-                className="block text-xl sm:text-4xl md:text-5xl font-bold text-[#343C32] tabular-nums"
+                className="block text-4xl sm:text-5xl md:text-6xl font-normal text-[#343C32] tabular-nums leading-none"
                 style={{ fontFamily: "var(--font-serif)" }}
               >
                 {timeLeft.minutes}
               </span>
               <span
-                className="block text-[0.55rem] sm:text-xs tracking-[0.16em] sm:tracking-[0.2em] text-[#74866D] font-semibold mt-1 uppercase"
+                className="block text-[0.62rem] sm:text-xs tracking-[0.22em] text-[#74866D] font-bold mt-2 uppercase"
                 style={{ fontFamily: "var(--font-display)" }}
               >
                 Minutes
               </span>
             </div>
 
-            <span className="hidden sm:inline text-2xl font-serif text-[#C6AD76]/60 pb-3">
-              :
-            </span>
-
             {/* Seconds */}
-            <div className="flex-1 max-w-[110px] bg-[#F7F3E9]/80 border border-[#C6AD76]/30 rounded-xl py-3 sm:py-5 px-1.5 sm:px-2 shadow-sm min-w-0">
+            <div className="bg-[#FBF9F4] border border-[#B09866]/40 rounded-2xl py-4 sm:py-6 px-3 shadow-sm flex flex-col items-center justify-center">
               <span
-                className="block text-xl sm:text-4xl md:text-5xl font-bold text-[#343C32] tabular-nums"
+                className="block text-4xl sm:text-5xl md:text-6xl font-normal text-[#343C32] tabular-nums leading-none"
                 style={{ fontFamily: "var(--font-serif)" }}
               >
                 {timeLeft.seconds}
               </span>
               <span
-                className="block text-[0.55rem] sm:text-xs tracking-[0.16em] sm:tracking-[0.2em] text-[#74866D] font-semibold mt-1 uppercase"
+                className="block text-[0.62rem] sm:text-xs tracking-[0.22em] text-[#74866D] font-bold mt-2 uppercase"
                 style={{ fontFamily: "var(--font-display)" }}
               >
                 Seconds
@@ -170,14 +159,14 @@ export default function Countdown() {
           </div>
 
           <p
-            className="text-sm sm:text-base italic text-[#74866D] my-4"
+            className="text-base sm:text-lg italic text-[#4A5335] my-5 leading-relaxed"
             style={{ fontFamily: "var(--font-serif)" }}
           >
-            {statusMessage}
+            “{statusMessage}”
           </p>
 
           <div className="mt-4">
-            <a href="#rsvp" className="btn btn-sage-primary">
+            <a href="#rsvp" className="btn btn-sage-primary text-xs sm:text-sm tracking-wider uppercase px-8 py-3.5">
               RSVP Your Attendance
             </a>
           </div>

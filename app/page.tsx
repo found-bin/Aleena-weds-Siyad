@@ -89,8 +89,8 @@ export default function WeddingPage() {
       >
         <Hero onAddToCalendar={handleAddToCalendar} />
         <FamilySection />
-        <Countdown />
         <ScheduleSection />
+        <Countdown />
         <RsvpSection onShowToast={showToast} />
         <SharingBar
           onShowToast={showToast}

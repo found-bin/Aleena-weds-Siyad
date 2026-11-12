@@ -5,18 +5,18 @@
 @tailwind utilities;
 
 :root {
-  /* The Sage Heirloom Palette */
+  /* The Sage Heirloom Palette — Booklet Edition */
   --primary-sage: #74866D;
-  --deep-olive: #343C32;
-  --warm-ivory: #F7F3E9;
-  --champagne-gold: #C6AD76;
+  --deep-olive: #4A5335;
+  --warm-ivory: #FBF9F4;
+  --champagne-gold: #B09866;
   --soft-green: #DCE3D5;
   --muted-neutral: #817E72;
   --white-paper: #FFFEFA;
 
   /* Typography Colors */
   --color-ink: #343C32;
-  --color-ink-soft: #4A5547;
+  --color-ink-soft: #4A5335;
   --color-muted: #817E72;
 
   /* Subtle Natural Paper Shadows */

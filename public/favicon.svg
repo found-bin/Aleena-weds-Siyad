@@ -6,13 +6,13 @@
       <stop offset="100%" stop-color="#343C32" />
     </radialGradient>
     <linearGradient id="favGold" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#F6DFB3" />
-      <stop offset="50%" stop-color="#C6AD76" />
-      <stop offset="100%" stop-color="#9E854E" />
+      <stop offset="0%" stop-color="#FBF9F4" />
+      <stop offset="45%" stop-color="#C6AD76" />
+      <stop offset="100%" stop-color="#A58C52" />
     </linearGradient>
   </defs>
   <circle cx="32" cy="32" r="30" fill="url(#favBg)"/>
-  <circle cx="32" cy="32" r="26.5" fill="none" stroke="url(#favGold)" stroke-width="1.2" stroke-dasharray="1.5 2.5"/>
+  <circle cx="32" cy="32" r="26.5" fill="none" stroke="url(#favGold)" stroke-width="1.2" stroke-dasharray="1.5 2"/>
   <circle cx="32" cy="32" r="24.5" fill="none" stroke="url(#favGold)" stroke-width="0.8"/>
-  <text x="32" y="37" font-family="'Cormorant Garamond', Georgia, serif" font-size="18" font-weight="600" fill="url(#favGold)" text-anchor="middle" letter-spacing="1">A×S</text>
+  <text x="32" y="38" font-family="'Cinzel', 'Cormorant Garamond', Georgia, serif" font-size="16" font-weight="700" fill="#FFFEFA" text-anchor="middle" letter-spacing="1">A&amp;S</text>
 </svg>
