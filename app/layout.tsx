@@ -71,7 +71,7 @@ export default function RootLayout({
   const favicon16Url = assetPath("/favicon/favicon-16x16.png");
   const appleTouchIconUrl = assetPath("/favicon/apple-touch-icon.png");
   const manifestUrl = assetPath("/favicon/site.webmanifest");
-  const heroCoupleUrl = assetPath("/images/couple/couple-illustration.jpg");
+  const heroCoupleUrl = assetPath("/images/couple/couple-illustration.webp");
 
   return (
     <html lang="en">

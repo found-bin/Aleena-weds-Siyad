@@ -53,7 +53,7 @@ for (const file of cssFiles) {
 
 // Check actual critical assets defined in weddingConfig.ts on disk in out/
 const criticalAssets = [
-  'images/couple/couple-illustration.jpg',
+  'images/couple/couple-illustration.webp',
   'images/venues/venue-nikah.jpg',
   'images/venues/venue-reception.jpg',
   'images/decorations/botanical-accent.jpg',
@@ -90,7 +90,7 @@ if (!allAssetsFound) {
 async function testHttp() {
   const testUrls = [
     '/wedding_invite_one/',
-    '/wedding_invite_one/images/couple/couple-illustration.jpg',
+    '/wedding_invite_one/images/couple/couple-illustration.webp',
     '/wedding_invite_one/images/venues/venue-nikah.jpg',
     '/wedding_invite_one/images/venues/venue-reception.jpg',
     '/wedding_invite_one/images/decorations/botanical-accent.jpg',

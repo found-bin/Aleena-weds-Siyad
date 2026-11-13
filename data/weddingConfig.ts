@@ -87,7 +87,7 @@ export interface WeddingImages {
 export const weddingImages: WeddingImages = {
   couple: {
     illustration: {
-      src: assetPath("/images/couple/couple-illustration.jpg"),
+      src: assetPath("/images/couple/couple-illustration.webp"),
       fallbackSrc: assetPath("/images/couple/couple-photo-2.jpg"),
       alt: "Aleena Siyad & Siyad T N Wedding Portrait",
       width: 800,

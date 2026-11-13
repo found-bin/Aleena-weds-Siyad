@@ -106,7 +106,7 @@ try {
         complete: img.complete,
         naturalWidth: img.naturalWidth
       }));
-      const coupleImg = images.find(img => img.src.includes('couple-illustration.jpg'));
+      const coupleImg = images.find(img => img.src.includes('couple-illustration.webp'));
       const nikahImg = images.find(img => img.src.includes('venue-nikah.jpg'));
       const receptionImg = images.find(img => img.src.includes('venue-reception.jpg'));
       return {
